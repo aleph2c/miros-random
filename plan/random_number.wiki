@@ -1,0 +1,49 @@
+*random number workflow*
+= Observe =
+  *What defines Success?*
+  
+  Development Speed!
+  A clear design that can be used in the example doc
+  A test suite to confirm the various parts
+  A second repo that will keep the big files out of the miros project
+  A complete random number example that demonstrates miros statecharts.
+
+  *What is the problem?*
+  A lot of moving parts, big files, theory needs to be understood.  Marshaling
+  required.
+
+  *Evidence that contradicts Assumptions:*
+  
+= Orient =
+  *Symptoms:*
+  quick description of symptoms that lead your belief
+  
+  *Questions for random number workflow:*
+    Can you simplify your test?
+    Do you have enough information?
+    What recently changed?
+
+  *Assumptions:*
+
+= Decide =
+  *Idea/Hypotheses for random number workflow: >=5*
+  * [X] Create Repo
+  * [X] Create Doc
+  * [X] Move code into new repo
+  * [ ] Link cellular automata docs to other repo
+  * [ ] Remove cellular automata stuff from miros
+  * [ ] Create Test Suite
+  * [ ] Move plans into new repo
+  * [ ] Update miros to point to new repo... remove cellular automata and random
+        files to make it smaller
+  * [ ] Port Design Document
+  * [ ] Create Development Plan
+  * [ ] Update of angle discovery
+  * [ ] Automata periodicity discovery
+  
+  *Chosen Idea/Hypothesis*
+
+  *Plan to Expand-on-Idea/Disprove-Hypothesis*
+
+= Act =
+
