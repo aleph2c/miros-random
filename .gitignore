@@ -27,5 +27,6 @@ venv/*
 .ipynb_checkpoints/*
 examples/.ipynb_checkpoints/*
 build/lib/miros/*
+miros_random.egg-info/*
 
 

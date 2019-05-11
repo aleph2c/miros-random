@@ -60,7 +60,7 @@ class Handler(watchdog.events.PatternMatchingEventHandler):
       # to_system('make clean')
 
       # generate the api docs
-      to_system('sphinx-apidoc -f -o ./../miros-random .')
+      to_system('sphinx-apidoc -f -o ./../miros_random .')
 
       # make the new html
       to_system('make html')
