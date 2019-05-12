@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. image:: _static/miros_a_lg.svg
+.. image:: _static/miros_random.svg
    :align: left
 
 miros-random

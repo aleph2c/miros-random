@@ -25,6 +25,9 @@ from functools import reduce
 White   = 0
 Black   = 1
 
+class SearchComplete(Exception):
+  pass
+
 def build_rule_function(number):
   if number > 2**8:
     print('not supported')
@@ -443,6 +446,7 @@ class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
         initial_condition_index,
         machine_cls,
         wall_cls)
+
       self.black_mask = np.array([Black], dtype=np.float32)
       self.white_mask = np.array([White], dtype=np.float32)
 
@@ -482,13 +486,15 @@ class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
       row_to_check = self.Z[previous_generation]
       sub_row_to_check = row_to_check[0:len(self.n_mask)]
 
+      # check up to the halfway point
       if np.array_equal(self.n_mask, sub_row_to_check):
-
-        self.nothing_at_row = self.generations-previous_generation + 1
-        adjacent = self.nothing_at_row
-        adjacent -= (self.cells_per_generation / math.sqrt(2.0))
-        opposite = self.cells_per_generation
-        self.n_angle = math.degrees(math.atan(opposite/adjacent))
+        if len(self.n_mask) == self.initial_condition_index+1:
+          self.nothing_at_row = self.generations-previous_generation + 1
+          adjacent = self.nothing_at_row
+          adjacent -= (self.cells_per_generation / math.sqrt(2.0))
+          opposite = self.cells_per_generation
+          self.n_angle = math.degrees(math.atan(opposite/adjacent))
+          raise SearchComplete
 
         self.build_next_mask()
 
