@@ -30,13 +30,20 @@
   * [X] Create Repo
   * [X] Create Doc
   * [X] Move code into new repo
-  * [ ] Link cellular automata docs to other repo
-  * [ ] Remove cellular automata stuff from miros
-  * [ ] Create Test Suite
-  * [ ] Move plans into new repo
-  * [ ] Update miros to point to new repo... remove cellular automata and random
+  * [X] Link cellular automata docs to other repo
+  * [X] Remove cellular automata stuff from miros
+  * [X] Create Test Suite
+  * [X] Move plans into new repo
+  * [X] Update miros to point to new repo... remove cellular automata and random
         files to make it smaller
-  * [ ] Port Design Document
+  * [X] Port Design Document
+  * [ ] Panda goals:
+    * [ ] load csv file
+    * [ ] create csv file with panda data
+    * [ ] concatenate csv file with new row data
+    * [ ] put prime data into csv
+    * [ ] put depth data into csv
+    * [ ] put width/depth periodicity into csv
   * [ ] Create Development Plan
   * [ ] Update of angle discovery
   * [ ] Automata periodicity discovery

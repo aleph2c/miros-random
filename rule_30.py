@@ -1397,41 +1397,42 @@ def autocorrelate(x):
   result[result.size//2] = 0
   return result[result.size//2:]
 
-# a specific column can repeat, while the other columns change
-# for this reason we need to multiply the spectrums together so
-# as to find where the real pattern repetitions take place
-max_c_indexs = []
-column_correlations = []
-for i in range(width):
-  column_correlations.append(autocorrelate(ma.for_pattern_search[i]))
-  max_index = np.argmax(column_correlations[-1])
-  max_c_indexs.append(max_index)
+if __name__ == "__main__":
+  # a specific column can repeat, while the other columns change
+  # for this reason we need to multiply the spectrums together so
+  # as to find where the real pattern repetitions take place
+  max_c_indexs = []
+  column_correlations = []
+  for i in range(width):
+    column_correlations.append(autocorrelate(ma.for_pattern_search[i]))
+    max_index = np.argmax(column_correlations[-1])
+    max_c_indexs.append(max_index)
 
-collective_correlations = column_correlations[0]
-for correlation in column_correlations[1:]:
-  collective_correlations = np.multiply(collective_correlations, correlation)
+  collective_correlations = column_correlations[0]
+  for correlation in column_correlations[1:]:
+    collective_correlations = np.multiply(collective_correlations, correlation)
 
-fig = plt.figure()
-autocorrelation_filename = "autocorrection.pdf"
-#plt.plot(pattern_index, collective_autocorrelation_fft_product)
-#plt.plot(pattern_index, cc)
-plt.plot([i for i in range(len(collective_correlations))], collective_correlations)
-plt.savefig(autocorrelation_filename, dpi=300)
+  fig = plt.figure()
+  autocorrelation_filename = "autocorrection.pdf"
+  #plt.plot(pattern_index, collective_autocorrelation_fft_product)
+  #plt.plot(pattern_index, cc)
+  plt.plot([i for i in range(len(collective_correlations))], collective_correlations)
+  plt.savefig(autocorrelation_filename, dpi=300)
 
-of_interest = []
-for i in range(10):
-  max_index = np.argmax(collective_correlations)
-  of_interest.append(max_index)
-  collective_correlations[max_index] = 0
+  of_interest = []
+  for i in range(10):
+    max_index = np.argmax(collective_correlations)
+    of_interest.append(max_index)
+    collective_correlations[max_index] = 0
 
-print(of_interest)
+  print(of_interest)
 
-cmd = 'cmd.exe /C {} &'.format(movie_filename)
-subprocess.Popen(cmd, shell=True)
+  cmd = 'cmd.exe /C {} &'.format(movie_filename)
+  subprocess.Popen(cmd, shell=True)
 
-cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
-subprocess.Popen(cmd, shell=True)
-#print(width)
-#print(ma.n_angle)
-#
-#cell = Rule30('bob')
+  cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
+  subprocess.Popen(cmd, shell=True)
+  #print(width)
+  #print(ma.n_angle)
+  #
+  #cell = Rule30('bob')

@@ -49,7 +49,6 @@ def build_rule_function(number):
     return masks[number]
   return fn
 
-
 rule_30_fn = build_rule_function(30)
 assert rule_30_fn(False, False, False) == False
 assert rule_30_fn(False, False, True) == True
@@ -428,6 +427,74 @@ class OneDCellularAutomata():
     while True:
       self.next_generation()
       yield self.Z
+
+class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
+
+    def __init__(self, 
+        generations, 
+        cells_per_generation=None, 
+        initial_condition_index=None,
+        machine_cls=None,
+        wall_cls=None):
+
+      super().__init__(
+        generations,
+        cells_per_generation,
+        initial_condition_index,
+        machine_cls,
+        wall_cls)
+      self.black_mask = np.array([Black], dtype=np.float32)
+      self.white_mask = np.array([White], dtype=np.float32)
+
+      if self.wall_cls == WallLeftWhiteRightBlack or \
+        self.wall_cls == WallLeftWhiteRightWhite:
+        self.n_mask = np.concatenate(
+           (self.white_mask, self.black_mask), axis=0)
+      else:
+        self.n_mask = np.concatenate(
+           (self.black_mask, self.white_mask), axis=0)
+      self.n_angle = 90
+
+      # self.initial_condition_index USE THIS
+
+    def build_next_mask(self):
+
+      if self.wall_cls == WallLeftBlackRightBlack or \
+        self.wall_cls == WallLeftBlackRightWhite:
+
+        if abs(self.n_mask[-1] - White) < 0.001:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.black_mask), axis=0)
+        else:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.white_mask), axis=0)
+      else:
+        if abs(self.n_mask[-1] - White) < 0.001:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.black_mask), axis=0)
+        else:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.white_mask), axis=0)
+
+    def update_angle(self):
+
+      previous_generation = self.generation+1
+      row_to_check = self.Z[previous_generation]
+      sub_row_to_check = row_to_check[0:len(self.n_mask)]
+
+      if np.array_equal(self.n_mask, sub_row_to_check):
+
+        self.nothing_at_row = self.generations-previous_generation + 1
+        adjacent = self.nothing_at_row
+        adjacent -= (self.cells_per_generation / math.sqrt(2.0))
+        opposite = self.cells_per_generation
+        self.n_angle = math.degrees(math.atan(opposite/adjacent))
+
+        self.build_next_mask()
+
+    def next_generation(self):
+      super().next_generation()
+      self.update_angle()
 
 class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
 
@@ -812,123 +879,124 @@ class ODCAXEquation:
 # Since the entropy generator will need access to computation, turn it into a
 # daemon and have it send entropy back to the main process
 
-width       = 11
-queue_depth = 20
-generations = 380
+if __name__ == '__main__':
+  width       = 11
+  queue_depth = 20
+  generations = 380
 
-# 16 * 28 * 26 = 11648
-# 16 * 39 = 624
-# 35 * 39 = 1366
-# 10, 4: 14
-# 10, 5: 16
-# 10, 6: 35
-# 11, 4: 24
-# 11, 5: 57
-# 11, 6: 28
-# 12, 5: 26
-# 13, 4: 9
-# 13, 5: 12
-# 13, 6: 46
-# (10, 5)^(10, 6) = 560
-# (11, 5)^(11, 6) = 1596
-# (10, 5)^(11, 5) = 912
-# (10, 6)^(11, 6) = 980
-# (10, 5)^(13, 5) = 192
-# (10, 5)^(13, 5) = 48
-# (10, 5)^(13, 5)^(11, 5) = 16*12*57 = 10944 (too big to see), but 912
-# 10944/912 -> 12
-# (10, 4)^(11, 4)^(13^4) = 14*24*9 = 3024
-# 2*7 2*2*2*3 3*3
-# changing the order didn't increase the periodicity
-# 456
-# (10, 5)^(13, 5)^(11, 5)^(12, 5) = 456
-# 16, 12, 57, 26 ?-> 456
+  # 16 * 28 * 26 = 11648
+  # 16 * 39 = 624
+  # 35 * 39 = 1366
+  # 10, 4: 14
+  # 10, 5: 16
+  # 10, 6: 35
+  # 11, 4: 24
+  # 11, 5: 57
+  # 11, 6: 28
+  # 12, 5: 26
+  # 13, 4: 9
+  # 13, 5: 12
+  # 13, 6: 46
+  # (10, 5)^(10, 6) = 560
+  # (11, 5)^(11, 6) = 1596
+  # (10, 5)^(11, 5) = 912
+  # (10, 6)^(11, 6) = 980
+  # (10, 5)^(13, 5) = 192
+  # (10, 5)^(13, 5) = 48
+  # (10, 5)^(13, 5)^(11, 5) = 16*12*57 = 10944 (too big to see), but 912
+  # 10944/912 -> 12
+  # (10, 4)^(11, 4)^(13^4) = 14*24*9 = 3024
+  # 2*7 2*2*2*3 3*3
+  # changing the order didn't increase the periodicity
+  # 456
+  # (10, 5)^(13, 5)^(11, 5)^(12, 5) = 456
+  # 16, 12, 57, 26 ?-> 456
 
-a = ODCAVariable(width=10, depth=3, generations=generations)
-b = ODCAVariable(width=10, depth=5, generations=generations)
-#c = ODCAVariable(width=10, depth=12, generations=generations)
-#d = ODCAVariable(width=12, depth=5, generations=generations)
+  a = ODCAVariable(width=10, depth=3, generations=generations)
+  b = ODCAVariable(width=10, depth=5, generations=generations)
+  #c = ODCAVariable(width=10, depth=12, generations=generations)
+  #d = ODCAVariable(width=12, depth=5, generations=generations)
 
-# commutative (order) indifferent
-# associative (grouping) indifferent
-equation = ODCAXEquation(a, generations=generations, width_alg='min')
-equation ^= b
-#equation ^= c
+  # commutative (order) indifferent
+  # associative (grouping) indifferent
+  equation = ODCAXEquation(a, generations=generations, width_alg='min')
+  equation ^= b
+  #equation ^= c
 
-print(periodicity(a, b))
-#print(periodicity(a, b, c, d))
-#exit(0)
+  print(periodicity(a, b))
+  #print(periodicity(a, b, c, d))
+  #exit(0)
 
-#equation ^= d
+  #equation ^= d
 
-ma = OneDCellularAutonomataWallRecursion(
-  generations=generations,
-  machine_cls=Rule30WithQueueDepth,
-  cells_per_generation=width,
-  queue_depth=queue_depth,
-  )
+  ma = OneDCellularAutonomataWallRecursion(
+    generations=generations,
+    machine_cls=Rule30WithQueueDepth,
+    cells_per_generation=width,
+    queue_depth=queue_depth,
+    )
 
-filename = "equation_rec_walls_{}_queue_{}_gen_{}".format(width, queue_depth, generations)
-eco = Canvas(equation)
-eco.run_animation(generations, interval=100)
-movie_filename = '{}.mp4'.format(filename)
-eco.save(movie_filename)
-png = '{}.png'.format(filename)
-eco.save(png)
+  filename = "equation_rec_walls_{}_queue_{}_gen_{}".format(width, queue_depth, generations)
+  eco = Canvas(equation)
+  eco.run_animation(generations, interval=100)
+  movie_filename = '{}.mp4'.format(filename)
+  eco.save(movie_filename)
+  png = '{}.png'.format(filename)
+  eco.save(png)
 
-eco.save('{}.pdf'.format(filename))
-eco.close()
-cmd = 'cmd.exe /C {} &'.format('{}.pdf'.format(filename))
-subprocess.Popen(cmd, shell=True)
+  eco.save('{}.pdf'.format(filename))
+  eco.close()
+  cmd = 'cmd.exe /C {} &'.format('{}.pdf'.format(filename))
+  subprocess.Popen(cmd, shell=True)
 
-def autocorrelate(x):
-  '''
+  def autocorrelate(x):
+    '''
 
-  compute the autocorrelation of vector x
+    compute the autocorrelation of vector x
 
-  **Args**:
-     | ``x`` (list): a list containing where each element is a 1.0 or 0.0
+    **Args**:
+       | ``x`` (list): a list containing where each element is a 1.0 or 0.0
 
-  **Returns**:
-     (list): the autocorrelation for the list
-  '''
-  result = np.correlate(x, x, mode='full')
-  # don't include the correletion with itself
-  result[result.size//2] = 0
-  return result[result.size//2:]
+    **Returns**:
+       (list): the autocorrelation for the list
+    '''
+    result = np.correlate(x, x, mode='full')
+    # don't include the correletion with itself
+    result[result.size//2] = 0
+    return result[result.size//2:]
 
-# a specific column can repeat, while the other columns change
-# for this reason we need to multiply the spectrums together so
-# as to find where the real pattern repetitions take place
-max_c_indexs = []
-column_correlations = []
-width = equation.width
-for i in range(width):
-  column_correlations.append(autocorrelate(equation.for_pattern_search[i]))
-  max_index = np.argmax(column_correlations[-1])
-  max_c_indexs.append(max_index)
+    # a specific column can repeat, while the other columns change
+    # for this reason we need to multiply the spectrums together so
+    # as to find where the real pattern repetitions take place
+    max_c_indexs = []
+    column_correlations = []
+    width = equation.width
+    for i in range(width):
+      column_correlations.append(autocorrelate(equation.for_pattern_search[i]))
+      max_index = np.argmax(column_correlations[-1])
+      max_c_indexs.append(max_index)
 
-collective_correlations = column_correlations[0]
-for correlation in column_correlations[1:]:
-  collective_correlations = np.multiply(collective_correlations, correlation)
+    collective_correlations = column_correlations[0]
+    for correlation in column_correlations[1:]:
+      collective_correlations = np.multiply(collective_correlations, correlation)
 
-fig = plt.figure()
-autocorrelation_filename = "autocorrection.pdf"
-#plt.plot(pattern_index, collective_autocorrelation_fft_product)
-#plt.plot(pattern_index, cc)
-plt.plot([i for i in range(len(collective_correlations))], collective_correlations)
-plt.savefig(autocorrelation_filename, dpi=300)
+    fig = plt.figure()
+    autocorrelation_filename = "autocorrection.pdf"
+    #plt.plot(pattern_index, collective_autocorrelation_fft_product)
+    #plt.plot(pattern_index, cc)
+    plt.plot([i for i in range(len(collective_correlations))], collective_correlations)
+    plt.savefig(autocorrelation_filename, dpi=300)
 
-of_interest = []
-for i in range(10):
-  max_index = np.argmax(collective_correlations)
-  of_interest.append(max_index)
-  collective_correlations[max_index] = 0
+    of_interest = []
+    for i in range(10):
+      max_index = np.argmax(collective_correlations)
+      of_interest.append(max_index)
+      collective_correlations[max_index] = 0
 
-print(of_interest)
+    print(of_interest)
 
-cmd = 'cmd.exe /C {} &'.format(movie_filename)
-subprocess.Popen(cmd, shell=True)
+    cmd = 'cmd.exe /C {} &'.format(movie_filename)
+    subprocess.Popen(cmd, shell=True)
 
-cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
-subprocess.Popen(cmd, shell=True)
+    cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
+    subprocess.Popen(cmd, shell=True)
