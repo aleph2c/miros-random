@@ -405,11 +405,11 @@
       ><text x="5" xml:space="preserve" y="33.9375" clip-path="url(#clipPath6)" stroke="none"
       >opposite = tan(theta)*adjacent</text
       ><text x="5" xml:space="preserve" y="49.9062" clip-path="url(#clipPath6)" stroke="none"
-      >deque_len = tan(theta)*cells_per_generation/2 + cells_per_generation/sqrt(2)</text
+      >deque_len = tan(theta)*cells_per_generation/2 + cells_per_generation/2</text
       ><text x="5" xml:space="preserve" y="81.8438" clip-path="url(#clipPath6)" stroke="none"
       ># simplify and ensure deque_len is an int</text
       ><text x="5" xml:space="preserve" y="97.8125" clip-path="url(#clipPath6)" stroke="none"
-      >deque_len = floor(cells_per_generation*(1/2*tan(theta)+1/sqrt(2)))</text
+      >deque_len = floor(cells_per_generation*(1/2*tan(theta)+1/2))</text
     ></g
     ><g transform="translate(970,230)"
     ><path fill="none" d="M10.5 10.5 L29.5 10.5" clip-path="url(#clipPath7)"
@@ -470,7 +470,7 @@
     /></g
     ><g font-family="sans-serif" font-size="14px" transform="translate(1170,150)"
     ><text x="5" xml:space="preserve" y="17.9688" clip-path="url(#clipPath17)" stroke="none"
-      >cells_per_generation/sqrt(2)</text
+      >cells_per_generation/2</text
     ></g
     ><g fill="rgb(0,255,255)" fill-opacity="0.4902" transform="translate(1000,230)" stroke-opacity="0.4902" stroke="rgb(0,255,255)"
     ><circle r="9.25" clip-path="url(#clipPath18)" cx="9.75" cy="9.75" stroke="none"

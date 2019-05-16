@@ -1310,7 +1310,7 @@ layer=3</panel_attributes>
       <w>184</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>cells_per_generation/sqrt(2)
+    <panel_attributes>cells_per_generation/2
 style=wordwrap
 layer=3</panel_attributes>
     <additional_attributes/>
@@ -1507,10 +1507,10 @@ layer=3</panel_attributes>
     </coordinates>
     <panel_attributes>adjacent = cells_per_generation/2
 opposite = tan(theta)*adjacent
-deque_len = tan(theta)*cells_per_generation/2 + cells_per_generation/sqrt(2)
+deque_len = tan(theta)*cells_per_generation/2 + cells_per_generation/2
 
 # simplify and ensure deque_len is an int
-deque_len = floor(cells_per_generation*(1/2*tan(theta)+1/sqrt(2)))
+deque_len = floor(cells_per_generation*(1/2*tan(theta)+1/2))
 style=wordwrap
 layer=3</panel_attributes>
     <additional_attributes/>

@@ -58,4 +58,5 @@ def test_angle_and_depth_discover():
   assert(int(results[6]['angle_of_n_phenomenon_on_left']) == 56)
   assert(int(results[6]['queue_depth']) == 5.0)
   assert(int(results[6]['width_of_automata']) == 6.0)
+  results = angle_and_depth(start_width=6, stop_width=200)
 

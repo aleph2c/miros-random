@@ -1,2 +1,0 @@
-width_of_automata,angle_of_n_phenomenon_on_left
-

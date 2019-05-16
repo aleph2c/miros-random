@@ -22,10 +22,17 @@ import re
 from scipy import fft
 from functools import reduce
 
+import pandas as pd
+from collections import OrderedDict
+import datetime as dt
+
 White   = 0
 Black   = 1
 
 class SearchComplete(Exception):
+  pass
+
+class IllegalIndex(Exception):
   pass
 
 def build_rule_function(number):
@@ -434,11 +441,17 @@ class OneDCellularAutomata():
 class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
 
     def __init__(self, 
-        generations, 
         cells_per_generation=None, 
         initial_condition_index=None,
         machine_cls=None,
         wall_cls=None):
+
+      depth_prior_to_n = int(cells_per_generation / 2)
+      opposite = int(cells_per_generation / 2)
+      angle_in_degrees = 23.0
+      adjacent = int(opposite/math.tan(math.radians(angle_in_degrees)))
+      generation_estimate = depth_prior_to_n + adjacent
+      generations = generation_estimate * 2
 
       super().__init__(
         generations,
@@ -489,13 +502,280 @@ class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
       # check up to the halfway point
       if np.array_equal(self.n_mask, sub_row_to_check):
         if len(self.n_mask) == self.initial_condition_index+1:
-          self.nothing_at_row = self.generations-previous_generation + 1
+          self.nothing_at_row = self.generations-previous_generation
           adjacent = self.nothing_at_row
-          adjacent -= (self.cells_per_generation / math.sqrt(2.0))
-          opposite = self.cells_per_generation
+          adjacent -= (self.cells_per_generation / 2.0)
+          opposite = self.cells_per_generation/2.0
           self.n_angle = math.degrees(math.atan(opposite/adjacent))
           raise SearchComplete
 
+        self.build_next_mask()
+
+    def next_generation(self):
+      super().next_generation()
+      try:
+        self.update_angle()
+      except SearchComplete:
+        raise RuntimeError
+
+class AngleAndDepthDiscovery():
+  def __init__(self, automata):
+    self.generation = automata.make_generation_coroutine()
+    while(True):
+      try:
+        next(self.generation)
+      except RuntimeError:
+        break
+    self.n_angle = automata.n_angle
+    self.queue_depth = automata.nothing_at_row
+
+class ListLike():
+  def __init__(self, start_index, stop_index, _list):
+    '''return a list like object, based on _list, which has been shifted
+    start_index numbers to the right.
+
+    **Note:**
+      The resulting list only looks like it has been shifted to the right when
+      it is being indexed.  This object is not actually a list, it does not
+      support wrapping or slicing, you can only access its data using square
+      brackets.
+
+    **Args**:
+       | ``start_index`` (int): The starting index
+       | ``stop_index`` (int): The stop index (not included in object)
+       | ``_list`` (list): The list to shift to the right by start_index locations
+
+    **Returns**:
+       (ListLike): something that is easy to index into
+
+    **Example(s)**:
+      
+    .. code-block:: python
+       
+       list_like = ListLike(8, 10, [8, 9])
+       list_like[7]  # => IllegalIndex exception
+       list_list[8]  # => 8
+       list_list[9]  # => 9
+       list_list[10] # => IllegalIndex exception
+
+    '''
+    self.start_index = start_index
+    self.stop_index = stop_index 
+    self.list = _list
+
+  def __getitem__(self, key):
+    if key < self.start_index:
+      raise IllegalIndex
+    if key >= self.stop_index:
+      raise IllegalIndex
+    index = key - self.start_index
+    return self.list[index]
+
+  def __repr__(self):
+    return "start_index: {}, stop_index: {}, list: {}".format(
+      self.start_index,
+      self.stop_index, self.list)
+
+def angle_and_depth(start_width, stop_width):
+  '''Get the angle and central depth of a rule 30 cellular automata held in
+  white walls.
+
+  The angle [degrees] is a measure of the rule 30 bulk entropy angle as it is
+  being consumed by the n-phenomenon at the bottom of the automata.  The depth
+  [cells], is the number of cells down the center of the automata, before this
+  column is consumed by the n-phenonenon.  See
+  https://aleph2c.github.io/miros-random/cellular_automata.html for pictures
+  details.
+
+  **Note**:
+     This function is memoized (cached) in the file named:
+     'rule_30_with_white_walls_depth_and_angle.txt'.  This file is opened and
+     updated with the panda python library.  Everytime a novel query is made the
+     program speeds up and the cached file gets a bit larger.
+
+     If a run of of an individual width/depth calculation takes 60 seconds or
+     more, the cached file is saved immediately after the calculation is
+     completed.  This way the user can stop midway through a long run and not
+     loose the data that has been calculated up until that moment of
+     cancellation.
+
+  **Args**:
+     | ``start_width`` (int): which width to start our query (included in result)
+     | ``stop_width`` (int): which width to stop query (not included in result)
+
+  **Returns**:
+     (ListLike): a list like object that can be indexes with a width int to
+     return diction information about that width.  The keys of the dictionaries
+     are the same as the column names of the
+     'rule_30_with_white_walls_depth_and_angle.txt' cached file.
+
+  **Example(s)**:
+    
+  .. code-block:: python
+     
+     results = angle_and_depth(start_width=6, stop_width=9)
+
+     print(results[5])  #=> IllegalIndex exception
+
+     print(results[6])  # =>
+      {'angle_of_n_phenomenon_on_left': 56.309932474020215, 'width_of_automata':
+      6.0, 'queue_depth': 5.0}
+     print(results[7])  # => ...
+     print(results[8])  # => ...
+
+     print(results[9])  #=> IllegalIndex exception
+
+  '''
+  queue_depth = []
+  results_dict = {}
+  width_of_automata = []
+  angle_of_n_phenomenon_on_left = []
+
+  sample_times = deque(maxlen=2)
+  sample_times.append(dt.datetime.now())
+  sample_times.append(dt.datetime.now())
+
+  column_titles = [
+    'width_of_automata',
+    'angle_of_n_phenomenon_on_left',
+    'queue_depth']
+  filename = 'rule_30_with_white_walls_depth_and_angle.txt'
+
+  width_key = 'width_of_automata'
+  depth_key = 'queue_depth'
+  angle_key = 'angle_of_n_phenomenon_on_left'
+
+  try:
+    df = pd.read_csv(filename)
+    old_data = df.to_dict()
+  except pd.errors.EmptyDataError:
+    old_data = {}
+    df = pd.DataFrame({
+      width_key: [],
+      depth_key: [],
+      angle_key: []})
+    df = df[column_titles]
+
+  # this function scoped within this constructor
+  def update_csv_file(old_data, width_of_automata, queue_depth, angle_of_n_phenomenon_on_left):
+    new_data = {
+      width_key: width_of_automata,
+      depth_key: queue_depth,
+      angle_key: angle_of_n_phenomenon_on_left
+    }
+    new_df = pd.DataFrame.from_dict(new_data)
+    new_df = new_df[column_titles]
+    if len(old_data) != 0:
+      old_df = pd.DataFrame.from_dict(old_data)
+      old_df = old_df[column_titles]
+      old_df = pd.concat([old_df, new_df], join='inner')
+    else:
+      old_df = new_df
+    old_df.to_csv(filename, index=False)
+
+  def get_rows(start_width, stop_width):
+    list_of_widths = list(range(start_width, stop_width))
+    rows = df.loc[df[width_key].isin(list_of_widths)]
+    return rows
+
+  rows = get_rows(start_width, stop_width)
+  if rows.empty:
+    # this is slow, check slice first
+    for width in range(start_width, stop_width):
+      result = df.loc[df[width_key]==width]
+
+      sample_times.append(dt.datetime.now())
+
+      time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
+      if not result.empty:
+        result = result.values
+      else:
+        search_automata = OneDCellularAutomataWithAngleDiscoveryAtMiddle(
+          machine_cls=Rule30,
+          wall_cls=WallLeftWhiteRightWhite,
+          cells_per_generation=width
+        )
+        discovery = AngleAndDepthDiscovery(search_automata)
+
+        print("width: {}, angle: {}, depth: {}, tlc_sec: {}".format(width, 
+          discovery.n_angle,
+          discovery.queue_depth,
+          time_since_last_computation))
+
+        width_of_automata.append(width)
+        queue_depth.append(discovery.queue_depth)
+        angle_of_n_phenomenon_on_left.append(discovery.n_angle)
+
+        if time_since_last_computation > 60:
+           update_csv_file(old_data, width_of_automata, queue_depth, angle_of_n_phenomenon_on_left)
+
+    update_csv_file(old_data, width_of_automata, queue_depth, angle_of_n_phenomenon_on_left)
+    rows = get_rows(start_width, stop_width)
+
+  # ListLike
+  result = ListLike(start_width, stop_width, rows.to_dict('record'))
+  return result
+
+class OneDCellularAutomataWithAngleDiscovery(OneDCellularAutomata):
+
+    def __init__(self, 
+        generations, 
+        cells_per_generation=None, 
+        initial_condition_index=None,
+        machine_cls=None,
+        wall_cls=None):
+
+      super().__init__(
+        generations,
+        cells_per_generation,
+        initial_condition_index,
+        machine_cls,
+        wall_cls)
+
+      self.black_mask = np.array([Black], dtype=np.float32)
+      self.white_mask = np.array([White], dtype=np.float32)
+
+      if self.wall_cls == WallLeftWhiteRightBlack or \
+        self.wall_cls == WallLeftWhiteRightWhite:
+        self.n_mask = np.concatenate(
+           (self.white_mask, self.black_mask), axis=0)
+      else:
+        self.n_mask = np.concatenate(
+           (self.black_mask, self.white_mask), axis=0)
+      self.n_angle = 90
+
+    def build_next_mask(self):
+
+      if self.wall_cls == WallLeftBlackRightBlack or \
+        self.wall_cls == WallLeftBlackRightWhite:
+
+        if abs(self.n_mask[-1] - White) < 0.001:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.black_mask), axis=0)
+        else:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.white_mask), axis=0)
+      else:
+        if abs(self.n_mask[-1] - White) < 0.001:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.black_mask), axis=0)
+        else:
+          self.n_mask = np.concatenate(
+            (self.n_mask, self.white_mask), axis=0)
+
+    def update_angle(self):
+
+      previous_generation = self.generation+1
+      row_to_check = self.Z[previous_generation]
+      sub_row_to_check = row_to_check[0:len(self.n_mask)]
+
+      # check up to the halfway point
+      if np.array_equal(self.n_mask, sub_row_to_check):
+        self.nothing_at_row = self.generations-previous_generation + 1
+        adjacent = self.nothing_at_row
+        adjacent -= (self.cells_per_generation / 2.0)
+        opposite = self.cells_per_generation
+        self.n_angle = math.degrees(math.atan(opposite/adjacent))
         self.build_next_mask()
 
     def next_generation(self):
@@ -736,7 +1016,10 @@ class Canvas():
     else:
       if self.automata.generation > 0:
         for i in range(self.automata.generations):
-          next(self.generation)
+          try:
+            next(self.generation)
+          except RuntimeError:
+            break
         self.ax.pcolormesh(self.automata.Z, cmap=self.cmap)
       #for item in [self.fig, self.ax]:
       #  item.patch.set_visible(False)
@@ -886,6 +1169,14 @@ class ODCAXEquation:
 # daemon and have it send entropy back to the main process
 
 if __name__ == '__main__':
+
+  ll = ListLike(8, 10, [8, 9])
+
+  #item = ll[7]
+  item_8 = ll[8]
+  item_9 = ll[9]
+  #item = ll[10]
+
   width       = 11
   queue_depth = 20
   generations = 380
@@ -1006,3 +1297,4 @@ if __name__ == '__main__':
 
     cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
     subprocess.Popen(cmd, shell=True)
+

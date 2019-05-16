@@ -239,7 +239,7 @@ design:
 
   I'm assuming you are working within a virtual enviroment.  If you are on
   windows, go and get the ubuntu app, and run this code within your Windows
-  Linux Subsystem (WLS).  If you are on a mac, you can use ``brew`` to get
+  Subsystem for Linux (WSL).  If you are on a mac, you can use ``brew`` to get
   ffmpeg.
 
 Here is a UML drawing of the Canvas class:
