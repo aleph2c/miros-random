@@ -29,11 +29,21 @@ import datetime as dt
 White   = 0
 Black   = 1
 
-class SearchComplete(Exception):
-  pass
+def autocorrelate(x):
+  '''
 
-class IllegalIndex(Exception):
-  pass
+  compute the autocorrelation of vector x
+
+  **Args**:
+     | ``x`` (list): a list containing where each element is a 1.0 or 0.0
+
+  **Returns**:
+     (list): the autocorrelation for the list
+  '''
+  result = np.correlate(x, x, mode='full')
+  # don't include the correletion with itself
+  result[result.size//2] = 0
+  return result[result.size//2:]
 
 def build_rule_function(number):
   if number > 2**8:
@@ -330,7 +340,7 @@ class OneDCellularAutomata():
     if wall_cls is None:
       self.wall_cls = WallLeftWhiteRightWhite
 
-    self.generations = generations
+    self.generations = generations + 1
     self.cells_per_generation = cells_per_generation
 
     # if they haven't specified cells_per_generation set it
@@ -437,6 +447,8 @@ class OneDCellularAutomata():
     while True:
       self.next_generation()
       yield self.Z
+      if self.generation == 0:
+        raise RuntimeError
 
 class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
 
@@ -472,29 +484,24 @@ class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
            (self.black_mask, self.white_mask), axis=0)
       self.n_angle = 90
 
-      # self.initial_condition_index USE THIS
-
     def build_next_mask(self):
 
-      if self.wall_cls == WallLeftBlackRightBlack or \
-        self.wall_cls == WallLeftBlackRightWhite:
-
-        if abs(self.n_mask[-1] - White) < 0.001:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.black_mask), axis=0)
-        else:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.white_mask), axis=0)
+      # alternate color
+      if self.n_mask[-1] == self.white_mask:
+        self.n_mask = np.concatenate(
+          (self.n_mask, self.black_mask), axis=0)
       else:
-        if abs(self.n_mask[-1] - White) < 0.001:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.black_mask), axis=0)
-        else:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.white_mask), axis=0)
+        self.n_mask = np.concatenate(
+          (self.n_mask, self.white_mask), axis=0)
+
+      # place the far right wall object based on wall type
+      if len(self.n_mask) >= self.cells_per_generation:
+        self.n_mask = self.n_mask[0:self.cells_per_generation]
+        self.n_mask[-1] = self.white_mask if \
+          self.wall_cls == WallLeftBlackRightWhite or WallLeftWhiteRightWhite else \
+          self.black_mask
 
     def update_angle(self):
-
       previous_generation = self.generation+1
       row_to_check = self.Z[previous_generation]
       sub_row_to_check = row_to_check[0:len(self.n_mask)]
@@ -507,16 +514,13 @@ class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
           adjacent -= (self.cells_per_generation / 2.0)
           opposite = self.cells_per_generation/2.0
           self.n_angle = math.degrees(math.atan(opposite/adjacent))
-          raise SearchComplete
+          raise RuntimeError
 
         self.build_next_mask()
 
     def next_generation(self):
       super().next_generation()
-      try:
-        self.update_angle()
-      except SearchComplete:
-        raise RuntimeError
+      self.update_angle()
 
 class AngleAndDepthDiscovery():
   def __init__(self, automata):
@@ -553,10 +557,10 @@ class ListLike():
     .. code-block:: python
        
        list_like = ListLike(8, 10, [8, 9])
-       list_like[7]  # => IllegalIndex exception
+       list_like[7]  # => IndexError exception
        list_list[8]  # => 8
        list_list[9]  # => 9
-       list_list[10] # => IllegalIndex exception
+       list_list[10] # => IndexError exception
 
     '''
     self.start_index = start_index
@@ -565,9 +569,9 @@ class ListLike():
 
   def __getitem__(self, key):
     if key < self.start_index:
-      raise IllegalIndex
+      raise IndexError
     if key >= self.stop_index:
-      raise IllegalIndex
+      raise IndexError
     index = key - self.start_index
     return self.list[index]
 
@@ -576,7 +580,7 @@ class ListLike():
       self.start_index,
       self.stop_index, self.list)
 
-def angle_and_depth(start_width, stop_width):
+def angle_and_depth(start_width, stop_width=None):
   '''Get the angle and central depth of a rule 30 cellular automata held in
   white walls.
 
@@ -601,7 +605,7 @@ def angle_and_depth(start_width, stop_width):
 
   **Args**:
      | ``start_width`` (int): which width to start our query (included in result)
-     | ``stop_width`` (int): which width to stop query (not included in result)
+     | ``stop_width=None`` (int): which width to stop query (not included in result)
 
   **Returns**:
      (ListLike): a list like object that can be indexes with a width int to
@@ -615,7 +619,7 @@ def angle_and_depth(start_width, stop_width):
      
      results = angle_and_depth(start_width=6, stop_width=9)
 
-     print(results[5])  #=> IllegalIndex exception
+     print(results[5])  #=> IndexError exception
 
      print(results[6])  # =>
       {'angle_of_n_phenomenon_on_left': 56.309932474020215, 'width_of_automata':
@@ -623,9 +627,11 @@ def angle_and_depth(start_width, stop_width):
      print(results[7])  # => ...
      print(results[8])  # => ...
 
-     print(results[9])  #=> IllegalIndex exception
+     print(results[9])  #=> IndexError exception
 
   '''
+  if stop_width is None:
+    stop_width = start_width + 1
   queue_depth = []
   results_dict = {}
   width_of_automata = []
@@ -679,7 +685,7 @@ def angle_and_depth(start_width, stop_width):
     return rows
 
   rows = get_rows(start_width, stop_width)
-  if rows.empty:
+  if rows.empty or (len(rows) < stop_width - start_width):
     # this is slow, check slice first
     for width in range(start_width, stop_width):
       result = df.loc[df[width_key]==width]
@@ -715,72 +721,6 @@ def angle_and_depth(start_width, stop_width):
   # ListLike
   result = ListLike(start_width, stop_width, rows.to_dict('record'))
   return result
-
-class OneDCellularAutomataWithAngleDiscovery(OneDCellularAutomata):
-
-    def __init__(self, 
-        generations, 
-        cells_per_generation=None, 
-        initial_condition_index=None,
-        machine_cls=None,
-        wall_cls=None):
-
-      super().__init__(
-        generations,
-        cells_per_generation,
-        initial_condition_index,
-        machine_cls,
-        wall_cls)
-
-      self.black_mask = np.array([Black], dtype=np.float32)
-      self.white_mask = np.array([White], dtype=np.float32)
-
-      if self.wall_cls == WallLeftWhiteRightBlack or \
-        self.wall_cls == WallLeftWhiteRightWhite:
-        self.n_mask = np.concatenate(
-           (self.white_mask, self.black_mask), axis=0)
-      else:
-        self.n_mask = np.concatenate(
-           (self.black_mask, self.white_mask), axis=0)
-      self.n_angle = 90
-
-    def build_next_mask(self):
-
-      if self.wall_cls == WallLeftBlackRightBlack or \
-        self.wall_cls == WallLeftBlackRightWhite:
-
-        if abs(self.n_mask[-1] - White) < 0.001:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.black_mask), axis=0)
-        else:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.white_mask), axis=0)
-      else:
-        if abs(self.n_mask[-1] - White) < 0.001:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.black_mask), axis=0)
-        else:
-          self.n_mask = np.concatenate(
-            (self.n_mask, self.white_mask), axis=0)
-
-    def update_angle(self):
-
-      previous_generation = self.generation+1
-      row_to_check = self.Z[previous_generation]
-      sub_row_to_check = row_to_check[0:len(self.n_mask)]
-
-      # check up to the halfway point
-      if np.array_equal(self.n_mask, sub_row_to_check):
-        self.nothing_at_row = self.generations-previous_generation + 1
-        adjacent = self.nothing_at_row
-        adjacent -= (self.cells_per_generation / 2.0)
-        opposite = self.cells_per_generation
-        self.n_angle = math.degrees(math.atan(opposite/adjacent))
-        self.build_next_mask()
-
-    def next_generation(self):
-      super().next_generation()
-      self.update_angle()
 
 class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
 
@@ -883,6 +823,128 @@ class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
     wall = cls()
     wall.start_at(cls.right_wall)
     return wall
+
+class ODCAWRPeriodDetection(OneDCellularAutonomataWallRecursion):
+
+  def __init__(self,
+      generations, 
+      cells_per_generation=None, 
+      initial_condition_index=None,
+      machine_cls=None,
+      wall_cls=None,
+      queue_depth=None):
+
+    super().__init__(
+       generations,
+       cells_per_generation,
+       initial_condition_index,
+       machine_cls,
+       wall_cls,
+       queue_depth=queue_depth)
+
+    self.period = None
+    self.queue_depth = queue_depth
+    self.last_pattern_without_n = None
+
+    self.black_mask = np.array([True], dtype=np.bool)
+    self.white_mask = np.array([False], dtype=np.bool)
+
+    # place left wall and next mask object based on wall type
+    if self.wall_cls == WallLeftWhiteRightBlack or \
+      self.wall_cls == WallLeftWhiteRightWhite:
+      self.n_mask = np.concatenate(
+         (self.white_mask, self.black_mask), axis=0)
+    else:
+      self.n_mask = np.concatenate(
+         (self.black_mask, self.white_mask), axis=0)
+
+    [self.build_next_mask() for cell in range(self.cells_per_generation)]
+
+  def build_next_mask(self):
+
+    # alternate color
+    if self.n_mask[-1] == self.white_mask:
+      self.n_mask = np.concatenate(
+        (self.n_mask, self.black_mask), axis=0)
+    else:
+      self.n_mask = np.concatenate(
+        (self.n_mask, self.white_mask), axis=0)
+
+    # place the far right wall object based on wall type
+    if len(self.n_mask) >= self.cells_per_generation:
+      self.n_mask = self.n_mask[0:self.cells_per_generation]
+      self.n_mask[-1] = self.white_mask if \
+        self.wall_cls == WallLeftBlackRightWhite or WallLeftWhiteRightWhite else \
+        self.black_mask
+
+  def period_search(self):
+
+    previous_generation = self.generation+1
+    row_to_check = self.Z[previous_generation]
+    sub_row_to_check = row_to_check[0:len(self.n_mask)]
+
+    # find the last location where the n-phenonenom was not reaching into the
+    # bulk of the automata
+    if len(self.n_mask) >= 3:
+      if np.all(np.equal(self.n_mask[0:3], sub_row_to_check[0:3]), axis=0) == False:
+        self.last_pattern_without_n = self.generations - previous_generation
+
+    # search for the n-phenonenom reaching all the way through the bulk of our 
+    # automata
+    if len(self.n_mask) == self.cells_per_generation:
+      if np.all(self.n_mask == sub_row_to_check):
+        # we have found the mask, so the build finished its unique
+        # pattern in the last generation
+        self.period = self.generations - previous_generation - 1
+        raise RuntimeError
+
+  def next_generation(self):
+    super().next_generation()
+    self.period_search()
+
+class PeriodicityDiscovery():
+  def __init__(self, automata):
+    self.generation = automata.make_generation_coroutine()
+    while(True):
+      try:
+        next(self.generation)
+      except RuntimeError:
+        break
+    self.period = automata.period
+    self.queue_depth = automata.queue_depth
+    self.last_pattern_without_n = automata.last_pattern_without_n
+
+def automata_periodicity(width, start_depth, stop_depth=None):
+
+  if stop_depth is None:
+    stop_depth = start_depth + 1
+
+  sample_times = deque(maxlen=2)
+  sample_times.append(dt.datetime.now())
+  sample_times.append(dt.datetime.now())
+
+  for depth in range(start_depth, stop_depth):
+    sample_times.append(dt.datetime.now())
+    time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
+
+    search_automata = ODCAWRPeriodDetection(
+      generations=200,
+      machine_cls=Rule30,
+      wall_cls=WallLeftWhiteRightWhite,
+      cells_per_generation=width,
+      queue_depth = depth,
+    )
+    discovery = PeriodicityDiscovery(search_automata)
+
+    print("width: {}, last_bulk: {}, period: {}, depth: {}, tlc_sec: {}".format(
+      width, 
+      discovery.last_pattern_without_n,
+      discovery.period,
+      discovery.queue_depth,
+      time_since_last_computation))
+
+  return discovery.period
+
 
 class Canvas():
   def __init__(self, automata, title=None):
@@ -1082,7 +1144,6 @@ class ODCAXEquation:
       result = vector
     return result
 
-
   def trim_width_to_min(self, vector):
     size_needed = vector.size - (vector.size - self.min_width)
     result = vector[0:size_needed]
@@ -1128,7 +1189,7 @@ class ODCAXEquation:
       self.row_result = reduce(xor_row, [obj.Z[g+1, :] for obj in self.automata])
       self.Z[g+1, :] = self.row_result
       self.generation = self.automata[0].generation
-      row_number = self.generation + 1
+      row_number = self.generation
       for col_number in range(self.Z.shape[1]):
         cell_color = self.Z[row_number, col_number]
         self.for_pattern_search[col_number].append(1.0 if abs(cell_color - Black)<0.01 else 0.0)
@@ -1167,6 +1228,7 @@ class ODCAXEquation:
 
 # Since the entropy generator will need access to computation, turn it into a
 # daemon and have it send entropy back to the main process
+
 
 if __name__ == '__main__':
 
@@ -1210,17 +1272,17 @@ if __name__ == '__main__':
   # 16, 12, 57, 26 ?-> 456
 
   a = ODCAVariable(width=10, depth=3, generations=generations)
-  b = ODCAVariable(width=10, depth=5, generations=generations)
+  #b = ODCAVariable(width=10, depth=5, generations=generations)
   #c = ODCAVariable(width=10, depth=12, generations=generations)
   #d = ODCAVariable(width=12, depth=5, generations=generations)
 
   # commutative (order) indifferent
   # associative (grouping) indifferent
   equation = ODCAXEquation(a, generations=generations, width_alg='min')
-  equation ^= b
+  #equation ^= b
   #equation ^= c
 
-  print(periodicity(a, b))
+  #print(periodicity(a, b, c))
   #print(periodicity(a, b, c, d))
   #exit(0)
 
@@ -1234,7 +1296,7 @@ if __name__ == '__main__':
     )
 
   filename = "equation_rec_walls_{}_queue_{}_gen_{}".format(width, queue_depth, generations)
-  eco = Canvas(equation)
+  eco = Canvas(ma)
   eco.run_animation(generations, interval=100)
   movie_filename = '{}.mp4'.format(filename)
   eco.save(movie_filename)
@@ -1246,55 +1308,38 @@ if __name__ == '__main__':
   cmd = 'cmd.exe /C {} &'.format('{}.pdf'.format(filename))
   subprocess.Popen(cmd, shell=True)
 
-  def autocorrelate(x):
-    '''
+  # a specific column can repeat, while the other columns change
+  # for this reason we need to multiply the spectrums together so
+  # as to find where the real pattern repetitions take place
+  max_c_indexs = []
+  column_correlations = []
+  for i in range(ma.cells_per_generation):
+    column_correlations.append(autocorrelate(ma.for_pattern_search[i]))
+    max_index = np.argmax(column_correlations[-1])
+    max_c_indexs.append(max_index)
 
-    compute the autocorrelation of vector x
+  collective_correlations = column_correlations[0]
+  for correlation in column_correlations[1:]:
+    collective_correlations = np.multiply(collective_correlations, correlation)
 
-    **Args**:
-       | ``x`` (list): a list containing where each element is a 1.0 or 0.0
+  fig = plt.figure()
+  autocorrelation_filename = "autocorrection.pdf"
+  #plt.plot(pattern_index, collective_autocorrelation_fft_product)
+  #plt.plot(pattern_index, cc)
+  plt.plot([i for i, j in enumerate(collective_correlations)], collective_correlations)
+  plt.savefig(autocorrelation_filename, dpi=300)
 
-    **Returns**:
-       (list): the autocorrelation for the list
-    '''
-    result = np.correlate(x, x, mode='full')
-    # don't include the correletion with itself
-    result[result.size//2] = 0
-    return result[result.size//2:]
+  of_interest = []
+  for i in range(10):
+    max_index = np.argmax(collective_correlations)
+    of_interest.append(max_index)
+    collective_correlations[max_index] = 0
 
-    # a specific column can repeat, while the other columns change
-    # for this reason we need to multiply the spectrums together so
-    # as to find where the real pattern repetitions take place
-    max_c_indexs = []
-    column_correlations = []
-    width = equation.width
-    for i in range(width):
-      column_correlations.append(autocorrelate(equation.for_pattern_search[i]))
-      max_index = np.argmax(column_correlations[-1])
-      max_c_indexs.append(max_index)
+  print(of_interest)
 
-    collective_correlations = column_correlations[0]
-    for correlation in column_correlations[1:]:
-      collective_correlations = np.multiply(collective_correlations, correlation)
+  cmd = 'cmd.exe /C {} &'.format(movie_filename)
+  subprocess.Popen(cmd, shell=True)
 
-    fig = plt.figure()
-    autocorrelation_filename = "autocorrection.pdf"
-    #plt.plot(pattern_index, collective_autocorrelation_fft_product)
-    #plt.plot(pattern_index, cc)
-    plt.plot([i for i in range(len(collective_correlations))], collective_correlations)
-    plt.savefig(autocorrelation_filename, dpi=300)
-
-    of_interest = []
-    for i in range(10):
-      max_index = np.argmax(collective_correlations)
-      of_interest.append(max_index)
-      collective_correlations[max_index] = 0
-
-    print(of_interest)
-
-    cmd = 'cmd.exe /C {} &'.format(movie_filename)
-    subprocess.Popen(cmd, shell=True)
-
-    cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
-    subprocess.Popen(cmd, shell=True)
+  cmd = 'cmd.exe /C {} &'.format(autocorrelation_filename)
+  subprocess.Popen(cmd, shell=True)
 
