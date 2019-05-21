@@ -367,16 +367,4 @@ layer=3</panel_attributes>
     <panel_attributes>*TwoDCellularAutomata*</panel_attributes>
     <additional_attributes/>
   </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>210</x>
-      <y>610</y>
-      <w>260</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Testing new conver_from_uxf code
-layer=3</panel_attributes>
-    <additional_attributes/>
-  </element>
 </diagram>
