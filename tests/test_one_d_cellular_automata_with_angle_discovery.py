@@ -11,12 +11,11 @@ sys.path.insert(0, path_to_this_file + '/../')
 from random_number import Rule30
 from random_number import Canvas 
 from random_number import WallLeftWhiteRightWhite
-from random_number import OneDCellularAutomataWithAngleDiscovery
+#from random_number import OneDCellularAutomataWithAngleDiscovery
 from random_number import OneDCellularAutomataWithAngleDiscoveryAtMiddle 
 
 from random_number import AngleAndDepthDiscovery
 from random_number import angle_and_depth
-from random_number import IllegalIndex
 
 @pytest.mark.angle
 def test_angle_discovery():
@@ -48,15 +47,23 @@ def test_angle_discovery():
 
 @pytest.mark.angle
 @pytest.mark.depth
-def test_angle_and_depth_discover():
+def test_angle_and_depth_discover_6_to_9():
   results = angle_and_depth(start_width=6, stop_width=9)
   print(results)
-  with pytest.raises(IllegalIndex):
+  with pytest.raises(IndexError):
     results[5]
-  with pytest.raises(IllegalIndex):
+  with pytest.raises(IndexError):
     results[9]
   assert(int(results[6]['angle_of_n_phenomenon_on_left']) == 56)
   assert(int(results[6]['queue_depth']) == 5.0)
   assert(int(results[6]['width_of_automata']) == 6.0)
-  results = angle_and_depth(start_width=6, stop_width=200)
 
+@pytest.mark.angle
+@pytest.mark.depth
+def test_angle_and_depth_discover_14():
+  results = angle_and_depth(start_width=14)
+  print(results)
+
+@pytest.mark.depth
+def test_going_big():
+  results = angle_and_depth(start_width=6, stop_width=450)
