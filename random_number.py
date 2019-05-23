@@ -29,6 +29,12 @@ import datetime as dt
 White   = 0
 Black   = 1
 
+width_key = 'width_of_automata'
+depth_key = 'queue_depth'
+period_key = 'period'
+repeat_key = 'repeat?'
+angle_key = 'angle_of_n_phenomenon_on_left'
+
 def autocorrelate(x):
   '''
 
@@ -642,19 +648,15 @@ def angle_and_depth(start_width, stop_width=None):
   sample_times.append(dt.datetime.now())
 
   column_titles = [
-    'width_of_automata',
-    'angle_of_n_phenomenon_on_left',
-    'queue_depth']
+    width_key,
+    angle_key,
+    depth_key]
   filename = 'rule_30_with_white_walls_depth_and_angle.txt'
-
-  width_key = 'width_of_automata'
-  depth_key = 'queue_depth'
-  angle_key = 'angle_of_n_phenomenon_on_left'
 
   try:
     df = pd.read_csv(filename)
     old_data = df.to_dict()
-  except pd.errors.EmptyDataError:
+  except:
     old_data = {}
     df = pd.DataFrame({
       width_key: [],
@@ -662,7 +664,6 @@ def angle_and_depth(start_width, stop_width=None):
       angle_key: []})
     df = df[column_titles]
 
-  # this function scoped within this constructor
   def update_csv_file(old_data, width_of_automata, queue_depth, angle_of_n_phenomenon_on_left):
     new_data = {
       width_key: width_of_automata,
@@ -692,9 +693,9 @@ def angle_and_depth(start_width, stop_width=None):
 
       sample_times.append(dt.datetime.now())
 
-      time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
       if not result.empty:
         result = result.values
+        time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
       else:
         search_automata = OneDCellularAutomataWithAngleDiscoveryAtMiddle(
           machine_cls=Rule30,
@@ -702,6 +703,7 @@ def angle_and_depth(start_width, stop_width=None):
           cells_per_generation=width
         )
         discovery = AngleAndDepthDiscovery(search_automata)
+        time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
 
         print("width: {}, angle: {}, depth: {}, tlc_sec: {}".format(width, 
           discovery.n_angle,
@@ -716,12 +718,13 @@ def angle_and_depth(start_width, stop_width=None):
            update_csv_file(old_data, width_of_automata, queue_depth, angle_of_n_phenomenon_on_left)
 
     update_csv_file(old_data, width_of_automata, queue_depth, angle_of_n_phenomenon_on_left)
+    df = pd.read_csv(filename)
     rows = get_rows(start_width, stop_width)
 
   # ListLike
   result = ListLike(start_width, stop_width, rows.to_dict('record'))
   return result
-
+    
 class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
 
   def __init__(self, 
@@ -731,24 +734,33 @@ class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
       machine_cls=None,
       wall_cls=None,
       queue_depth=None):
-    '''short description
-
-    longer description
-
-    **Note**:
-       Do this not that recommendation
+    '''Translate the information from the center of an automata onto the walls
+       via a ring buffer tracking its center information.
 
     **Args**:
-       | ``generations`` (type1): 
-       | ``cell_per_generation`` (type1): 
-       | ``initial_condition_index`` (type1): 
-       | ``machine_cls`` (type1): 
-       | ``wall_cls`` (type1): 
+       | ``generations`` (int):  the number of generations over which to run the automata
+       | ``cell_per_generation`` (int): how wide the automata is (walls on either side)
+       | ``initial_condition_index`` (int): where to place the first black square
+       | ``machine_cls`` (Rule): what type of rule machine to place in the bulk
+       | ``wall_cls`` (Wall): what type of wall to put on the sides
 
     **Returns**:
        (type): 
 
     **Example(s)**:
+
+    .. code-block:: python
+
+      machine = OneDCellularAutonomataWallRecursion(
+                  machine_cls=Rule30,
+                  wall_cls=WallLeftWhiteRightWhite,
+                  queue_depth=6,
+                  generations=1000,
+                  cells_per_generation=22)
+
+      canvas = Canvas(machine)
+      canvas.run_animation(1000, interval=100)
+      canvas.save("file_name.pdf")
 
     '''
     super().__init__(
@@ -843,6 +855,7 @@ class ODCAWRPeriodDetection(OneDCellularAutonomataWallRecursion):
        queue_depth=queue_depth)
 
     self.period = None
+    self.repeats = None
     self.queue_depth = queue_depth
     self.last_pattern_without_n = None
 
@@ -896,7 +909,51 @@ class ODCAWRPeriodDetection(OneDCellularAutonomataWallRecursion):
         # we have found the mask, so the build finished its unique
         # pattern in the last generation
         self.period = self.generations - previous_generation - 1
-        raise RuntimeError
+        raise EOFError
+
+    # if there mask fails, which it will in most cases we
+    # do deep search for repeating period here
+    column_correlations = []
+    for column_number in range(self.cells_per_generation):
+      column_correlations.append(autocorrelate(self.for_pattern_search[column_number]))
+
+    collective_correlations = column_correlations[0]
+    for correlation in column_correlations[1:]:
+      collective_correlations = np.multiply(collective_correlations, correlation)
+
+    candidate_periods = []
+
+    for i in range(10):
+      max_index = np.argmax(collective_correlations)
+      candidate_periods.append(max_index)
+      collective_correlations[max_index] = 0
+
+    # check for period every cells_per_generation times
+    if (self.generations - self.generation) % self.cells_per_generation == 0:
+
+      # try all 10 candidates, we might be able to speed up the algorithm
+      # if our actual period is being drown out by the noise at the beginning
+      # of our list
+      for candidate in candidate_periods:
+
+        if candidate == 0:
+          break
+
+        # Z is upside down so we have to really think about our indices here
+        location = self.generation + 1  # get the lastest location with information
+        checking_location = location + candidate  # look back in time
+
+        # if we aren't at the beginning of our run and the row of of lastest
+        # information matches with the row canditate cells into the past, then we
+        # have found our period
+        if checking_location < self.generations:
+          period_found = np.all(self.Z[location, :] == self.Z[checking_location, :])
+        else:
+          period_found = False
+     
+        if period_found:
+          self.period = candidate
+          raise RuntimeError
 
   def next_generation(self):
     super().next_generation()
@@ -908,42 +965,183 @@ class PeriodicityDiscovery():
     while(True):
       try:
         next(self.generation)
+      except EOFError:
+        self.repeats = False
+        break
       except RuntimeError:
+        self.repeats = True
         break
     self.period = automata.period
     self.queue_depth = automata.queue_depth
     self.last_pattern_without_n = automata.last_pattern_without_n
 
 def automata_periodicity(width, start_depth, stop_depth=None):
+  '''Get the period and information about if an automata repeats, given a width
+  and range of the queue_depths described by the input arguments.
 
+  The period [cells] is a measure of the rule 30 bulk entropy unique duration as it is
+  being run forever.  If the period repeats, this unique pattern will occur over
+  and over again, if this period does not repeat the bulk of the entropy
+  produced will be consumed by the n-phenomenon, despite our efforts to hold it
+  off with the recursive wall strategy.
+  See https://aleph2c.github.io/miros-random/cellular_automata.html for pictures
+  details.
+
+  **Note**:
+     This function is memoized (cached) in the file named:
+     'rule_30_with_white_walls_depth_and_periodicity.txt'.  This file is opened and
+     updated with the panda python library.  Every time a novel query is made,
+     subsequent calls to the same program will speed up at the cost of a larger
+     cache file.
+
+     If a run of of an individual period discovery calculation takes 60 seconds or
+     more, the cached file is saved immediately after the calculation is
+     completed.  This way the user can stop midway through a long run and not
+     loose the data that has been calculated up until that moment of
+     cancellation.
+
+  **Args**:
+     | ``width`` (int): which width to start our query (included in result)
+     | ``start_depth`` (int): which depth to start the query.
+     | ``stop_depth=None`` (int): which depth to stop query (not included in result)
+
+  **Returns**:
+     (ListLike): a list like object that can be indexes with a depth int to
+     return diction information about that depth, for the given width.  The keys
+     of the dictionaries are the same as the column names of the
+     'rule_30_with_white_walls_depth_and_period.txt' cached file.
+
+  **Example(s)**:
+    
+  .. code-block:: python
+     
+     results = automata_period(width=22, start_depth=6, stop_depth=9)
+
+     print(results[5])  #=> IndexError exception
+
+     print(results[6])  # =>
+     [{'repeat?': False, 'queue_depth': 6, 'period': 195, 'width_of_automata': 22},
+      {'repeat?': False, 'queue_depth': 7, 'period': 133, 'width_of_automata': 22},
+      {'repeat?': False, 'queue_depth': 8, 'period': 167, 'width_of_automata': 22}]
+
+     print(results[7])  # => ...
+     print(results[8])  # => ...
+
+     print(results[9])  #=> IndexError exception
+
+  '''
   if stop_depth is None:
     stop_depth = start_depth + 1
+
+  width_list, depth_list, period_list, repeat_list = [], [], [], []
 
   sample_times = deque(maxlen=2)
   sample_times.append(dt.datetime.now())
   sample_times.append(dt.datetime.now())
 
-  for depth in range(start_depth, stop_depth):
-    sample_times.append(dt.datetime.now())
-    time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
+  column_titles = [
+    width_key,
+    depth_key,
+    period_key,
+    repeat_key]
+  filename = 'rule_30_with_white_walls_depth_and_periodicity.txt'
 
-    search_automata = ODCAWRPeriodDetection(
-      generations=200,
-      machine_cls=Rule30,
-      wall_cls=WallLeftWhiteRightWhite,
-      cells_per_generation=width,
-      queue_depth = depth,
-    )
-    discovery = PeriodicityDiscovery(search_automata)
+  dtype0 = {
+    width_key: 'int64',
+    depth_key: 'int64',
+    period_key: 'int64',
+    repeat_key: 'bool'
+  }
 
-    print("width: {}, last_bulk: {}, period: {}, depth: {}, tlc_sec: {}".format(
-      width, 
-      discovery.last_pattern_without_n,
-      discovery.period,
-      discovery.queue_depth,
-      time_since_last_computation))
+  try:
+    df = pd.read_csv(filename)
+    df = df.astype(dtype0)
+    old_data = df.to_dict()
+  except:
+    old_data = {}
+    df = pd.DataFrame({
+      width_key: [],
+      depth_key: [],
+      period_key: [],
+      repeat_key: [],
+      })
+    df = df[column_titles]
+    df = df.astype(dtype0)
 
-  return discovery.period
+  def update_csv_file(old_data, width_of_automata, queue_depth, period, repeats):
+    new_data = {
+      width_key: width_of_automata,
+      depth_key: queue_depth,
+      period_key: period,
+      repeat_key: repeats,
+    }
+    new_df = pd.DataFrame.from_dict(new_data)
+    new_df = new_df[column_titles]
+
+    if len(old_data) != 0:
+      old_df = pd.DataFrame.from_dict(old_data)
+      old_df = old_df[column_titles]
+      old_df = pd.concat([old_df, new_df], join='inner')
+    else:
+      old_df = new_df
+    old_df.to_csv(filename, index=False)
+
+  def get_rows(width, start_depth, stop_depth):
+    list_of_depths = list(range(start_depth, stop_depth))
+    dff = df[df[width_key] == width]
+    mask = dff[depth_key].isin(list_of_depths)
+    rows = dff[mask]
+    return rows
+
+  rows = get_rows(width, start_depth, stop_depth)
+  if rows.empty or (len(rows) < stop_depth-start_depth):
+    for depth in range(start_depth, stop_depth):
+      dff = df[df[width_key] == width]
+      mask = dff[depth_key].isin([depth])
+      result = dff[mask]
+
+      sample_times.append(dt.datetime.now())
+
+      if not result.empty:
+        result = result.values
+        time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
+      else:
+        search_automata = ODCAWRPeriodDetection(
+          generations=2000000,
+          machine_cls=Rule30,
+          wall_cls=WallLeftWhiteRightWhite,
+          cells_per_generation=width,
+          queue_depth = depth,
+        )
+        discovery = PeriodicityDiscovery(search_automata)
+
+        time_since_last_computation = (sample_times[1] - sample_times[0]).total_seconds()
+        print("width: {}, last_bulk: {}, period: {}, depth: {}, tlc_sec: {}".format(
+          width, 
+          discovery.last_pattern_without_n,
+          discovery.period,
+          discovery.queue_depth,
+          time_since_last_computation))
+
+        width_list.append(width)
+        depth_list.append(depth)
+        period_list.append(discovery.period)
+        repeat_list.append(discovery.repeats)
+
+        if time_since_last_computation > 60:
+           update_csv_file(old_data, 
+             width_list, 
+             depth_list,
+             period_list,
+             repeat_list)
+
+    update_csv_file(old_data, width_list, depth_list, period_list, repeat_list)
+    df = pd.read_csv(filename)
+    rows = get_rows(width, start_depth, stop_depth)
+
+  # ListLike
+  result = ListLike(start_depth, stop_depth, rows.to_dict('record'))
+  return result
 
 
 class Canvas():
@@ -1239,9 +1437,9 @@ if __name__ == '__main__':
   item_9 = ll[9]
   #item = ll[10]
 
-  width       = 11
-  queue_depth = 20
-  generations = 380
+  width       = 22
+  queue_depth = 2
+  generations = 1500
 
   # 16 * 28 * 26 = 11648
   # 16 * 39 = 624
@@ -1271,7 +1469,7 @@ if __name__ == '__main__':
   # (10, 5)^(13, 5)^(11, 5)^(12, 5) = 456
   # 16, 12, 57, 26 ?-> 456
 
-  a = ODCAVariable(width=10, depth=3, generations=generations)
+  a = ODCAVariable(width=22, depth=2, generations=generations)
   #b = ODCAVariable(width=10, depth=5, generations=generations)
   #c = ODCAVariable(width=10, depth=12, generations=generations)
   #d = ODCAVariable(width=12, depth=5, generations=generations)
