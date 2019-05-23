@@ -458,78 +458,142 @@ class OneDCellularAutomata():
 
 class OneDCellularAutomataWithAngleDiscoveryAtMiddle(OneDCellularAutomata):
 
-    def __init__(self, 
+  def __init__(self, 
         cells_per_generation=None, 
         initial_condition_index=None,
         machine_cls=None,
         wall_cls=None):
+    '''An automata which will raise a RuntimeError when the n-phenonenon is
+    discovered.  
 
-      depth_prior_to_n = int(cells_per_generation / 2)
-      opposite = int(cells_per_generation / 2)
-      angle_in_degrees = 23.0
-      adjacent = int(opposite/math.tan(math.radians(angle_in_degrees)))
-      generation_estimate = depth_prior_to_n + adjacent
-      generations = generation_estimate * 2
+    **Note**:
+       This object is intended to be used by another object to provide the loop
+       call to it's coroutine. (next)
 
-      super().__init__(
-        generations,
-        cells_per_generation,
-        initial_condition_index,
-        machine_cls,
-        wall_cls)
+    **Args**:
+       | ``cells_per_generation=None`` (int): the width of the automata
+       | ``initial_condition_index=None`` (int): where to place the first black
+       |                                         cell in the first row of the automata
+       | ``machine_cls=None`` (int): the 1-D cellular automata in the bulk
+       | ``wall_cls=None`` (Wall): the type of wall class
 
-      self.black_mask = np.array([Black], dtype=np.float32)
-      self.white_mask = np.array([White], dtype=np.float32)
+    **Returns**:
+       (OneDCellularAutomataWithAngleDiscoveryAtMiddle):  this object
 
-      if self.wall_cls == WallLeftWhiteRightBlack or \
-        self.wall_cls == WallLeftWhiteRightWhite:
-        self.n_mask = np.concatenate(
-           (self.white_mask, self.black_mask), axis=0)
-      else:
-        self.n_mask = np.concatenate(
-           (self.black_mask, self.white_mask), axis=0)
-      self.n_angle = 90
+    **Example(s)**:
+      
+    .. code-block:: python
 
-    def build_next_mask(self):
+        search_automata = OneDCellularAutomataWithAngleDiscoveryAtMiddle(
+          machine_cls=Rule30,
+          wall_cls=WallLeftWhiteRightWhite,
+          cells_per_generation=width
+        )
+        discovery = AngleAndDepthDiscovery(search_automata)
 
-      # alternate color
-      if self.n_mask[-1] == self.white_mask:
-        self.n_mask = np.concatenate(
-          (self.n_mask, self.black_mask), axis=0)
-      else:
-        self.n_mask = np.concatenate(
-          (self.n_mask, self.white_mask), axis=0)
+        # The AngleAndDepthDiscovery consumes the
+        # OneDCellularAutomataWithAngleDiscoveryAtMiddle, by running a loop
+        # until the RuntimeError is detected.
+        discovery = PeriodicityDiscovery(search_automata)
+    '''
 
-      # place the far right wall object based on wall type
-      if len(self.n_mask) >= self.cells_per_generation:
-        self.n_mask = self.n_mask[0:self.cells_per_generation]
-        self.n_mask[-1] = self.white_mask if \
-          self.wall_cls == WallLeftBlackRightWhite or WallLeftWhiteRightWhite else \
-          self.black_mask
+    depth_prior_to_n = int(cells_per_generation / 2)
+    opposite = int(cells_per_generation / 2)
+    angle_in_degrees = 23.0
+    adjacent = int(opposite/math.tan(math.radians(angle_in_degrees)))
+    generation_estimate = depth_prior_to_n + adjacent
+    generations = generation_estimate * 2
 
-    def update_angle(self):
-      previous_generation = self.generation+1
-      row_to_check = self.Z[previous_generation]
-      sub_row_to_check = row_to_check[0:len(self.n_mask)]
+    super().__init__(
+      generations,
+      cells_per_generation,
+      initial_condition_index,
+      machine_cls,
+      wall_cls)
 
-      # check up to the halfway point
-      if np.array_equal(self.n_mask, sub_row_to_check):
-        if len(self.n_mask) == self.initial_condition_index+1:
-          self.nothing_at_row = self.generations-previous_generation
-          adjacent = self.nothing_at_row
-          adjacent -= (self.cells_per_generation / 2.0)
-          opposite = self.cells_per_generation/2.0
-          self.n_angle = math.degrees(math.atan(opposite/adjacent))
-          raise RuntimeError
+    self.black_mask = np.array([Black], dtype=np.float32)
+    self.white_mask = np.array([White], dtype=np.float32)
 
-        self.build_next_mask()
+    if self.wall_cls == WallLeftWhiteRightBlack or \
+      self.wall_cls == WallLeftWhiteRightWhite:
+      self.n_mask = np.concatenate(
+         (self.white_mask, self.black_mask), axis=0)
+    else:
+      self.n_mask = np.concatenate(
+         (self.black_mask, self.white_mask), axis=0)
+    self.n_angle = 90
 
-    def next_generation(self):
-      super().next_generation()
-      self.update_angle()
+  def build_next_mask(self):
+
+    # alternate color
+    if self.n_mask[-1] == self.white_mask:
+      self.n_mask = np.concatenate(
+        (self.n_mask, self.black_mask), axis=0)
+    else:
+      self.n_mask = np.concatenate(
+        (self.n_mask, self.white_mask), axis=0)
+
+    # place the far right wall object based on wall type
+    if len(self.n_mask) >= self.cells_per_generation:
+      self.n_mask = self.n_mask[0:self.cells_per_generation]
+      self.n_mask[-1] = self.white_mask if \
+        self.wall_cls == WallLeftBlackRightWhite or WallLeftWhiteRightWhite else \
+        self.black_mask
+
+  def update_angle(self):
+    previous_generation = self.generation+1
+    row_to_check = self.Z[previous_generation]
+    sub_row_to_check = row_to_check[0:len(self.n_mask)]
+
+    # check up to the halfway point
+    if np.array_equal(self.n_mask, sub_row_to_check):
+      if len(self.n_mask) == self.initial_condition_index+1:
+        self.nothing_at_row = self.generations-previous_generation
+        adjacent = self.nothing_at_row
+        adjacent -= (self.cells_per_generation / 2.0)
+        opposite = self.cells_per_generation/2.0
+        self.n_angle = math.degrees(math.atan(opposite/adjacent))
+        raise RuntimeError
+
+      self.build_next_mask()
+
+  def next_generation(self):
+    super().next_generation()
+    self.update_angle()
 
 class AngleAndDepthDiscovery():
   def __init__(self, automata):
+    '''Iterates over an OneDCellularAutomataWithAngleDiscoveryAtMiddle object,
+    which is provided as an argument.  When the
+    OneDCellularAutomataWithAngleDiscoveryAtMiddle object's generator has found the
+    conditions where an angle has been found it issues a RuntimeError exception
+    (like all generators these days).
+
+    This exception is caught by this object, the angle and the nothing_at_row
+    information are added to this object's attributes and it returns.
+
+    **Args**:
+       | ``automata`` (OneDCellularAutomataWithAngleDiscoveryAtMiddle): an
+       |              automata which will issue a RuntimeError exception when it has finished
+       |              searching
+
+    **Returns**:
+       (AngleAndDepthDiscovery): an object with a angle and nothing_at_row attribute
+
+    **Example(s)**:
+      
+    .. code-block:: python
+       
+        search_automata = OneDCellularAutomataWithAngleDiscoveryAtMiddle(
+          machine_cls=Rule30,
+          wall_cls=WallLeftWhiteRightWhite,
+          cells_per_generation=20
+        )
+        discovery = AngleAndDepthDiscovery(search_automata)
+        print(discovery.angle)  # => 21.03..
+        print(discovery.nothing_at_row)  # => 36
+
+    '''
     self.generation = automata.make_generation_coroutine()
     while(True):
       try:
@@ -549,6 +613,9 @@ class ListLike():
       it is being indexed.  This object is not actually a list, it does not
       support wrapping or slicing, you can only access its data using square
       brackets.
+
+      The jury is out about if this is even a good idea, I may refactor away
+      this class if it doesn't make things easier to read in the code.
 
     **Args**:
        | ``start_index`` (int): The starting index
@@ -838,14 +905,54 @@ class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
 
 class ODCAWRPeriodDetection(OneDCellularAutonomataWallRecursion):
 
-  def __init__(self,
+  def __init__(self, 
       generations, 
-      cells_per_generation=None, 
-      initial_condition_index=None,
+      cells_per_generation=None,
+      initial_condition_index=None, 
       machine_cls=None,
       wall_cls=None,
       queue_depth=None):
+    '''An automata which will raise one of two exceptions if the period is
+    found while it is being run in a different iterator.  If the n-phenomenon
+    over-runs the bulk an EOFError exception is raised.  If the autocorrelation
+    routine finds the period, a RuntimeError exception is raised (to mimic how
+    modern generators work).
 
+    **Note**:
+       This object is intended to be used by another object to provide the loop
+       call to it's coroutine. (next)
+
+    **Args**:
+       | ``generations`` (int):  only needed for super
+       | ``cells_per_generation=None`` (int): the width of the automata
+       | ``initial_condition_index=None`` (int): where to place the first black
+       |                                         cell in the first row of the automata
+       | ``machine_cls=None`` (int): the 1-D cellular automata in the bulk
+       | ``wall_cls=None`` (Wall): the type of wall class
+       | ``queue_depth=None`` (int): the queue depth for the recursive walls
+
+    **Returns**:
+       (ODCAWRPeriodDetection):  this object
+
+    **Example(s)**:
+      
+    .. code-block:: python
+
+        search_automata = ODCAWRPeriodDetection(
+          generations=2000000,  # end at some really high number so not to run forever
+          machine_cls=Rule30,
+          wall_cls=WallLeftWhiteRightWhite,
+          cells_per_generation=width,
+          queue_depth = depth,
+        )
+        # The PeriodicityDiscovery consumes the ODCAWRPeriodDetection, by
+        # running a loop until exceptions are detected, then it converts these
+        # exceptions and ODCAWRPeriodDetection data into useful attributes
+        # contained within the discovery object.
+        discovery = PeriodicityDiscovery(search_automata)
+
+    '''
+    
     super().__init__(
        generations,
        cells_per_generation,
