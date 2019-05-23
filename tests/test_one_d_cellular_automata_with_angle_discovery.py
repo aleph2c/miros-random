@@ -66,4 +66,4 @@ def test_angle_and_depth_discover_14():
 
 @pytest.mark.depth
 def test_going_big():
-  results = angle_and_depth(start_width=6, stop_width=450)
+  results = angle_and_depth(start_width=6, stop_width=485)
