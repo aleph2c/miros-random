@@ -34,17 +34,23 @@ sys.path.insert(0, path_to_this_file + '/../')
 def test_period_discovery_with_mask():
   # we know rule 22 points at which it stops
   # add a mask which will detect for this
-  # 22, 6, 197, False
-  # 22, 7, 135, False
-  # 22, 8, 169, False
-  #assert(automata_periodicity(22, 6) == (195, False))
-  #assert(automata_periodicity(22, 7) == (133, False))
-  #assert(automata_periodicity(22, 8) == (167, False))
-  for width in range(10, 23):
-    result = automata_periodicity(width, 2, 31)
-    print(result)
+  result = (automata_periodicity(22, 6) == (195, False))
+  assert(result[6]['repeat?'] == False)
+  assert(result[6]['period'] == 195)
+  assert(result[6]['width_of_automata'] == 22)
+  result = (automata_periodicity(22, 7) == (133, False))
+  assert(result[7]['repeat?'] == False)
+  assert(result[6]['period'] == 133)
+  assert(result[6]['width_of_automata'] == 22)
+  result = (automata_periodicity(22, 8) == (167, False))
+  assert(result[8]['repeat?'] == False)
+  assert(result[6]['period'] == 167)
+  assert(result[6]['width_of_automata'] == 22)
 
-#@pytest.mark.twentytwo
-#def test_period_discovery_without_mask():
-#  assert(automata_periodicity(22, 2) == (113, True))
+@pytest.mark.twentytwo
+def test_period_discovery_without_mask():
+  result = automata_periodicity(22, 2)
+  assert(result[8]['repeat?'] == True)
+  assert(result[6]['period'] == 113)
+  assert(result[6]['width_of_automata'] == 22)
 
