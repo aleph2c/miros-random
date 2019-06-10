@@ -1,6 +1,18 @@
+import os
+import re
+import csv
+import math
+import pathlib
 import subprocess
+import datetime as dt
+from functools import reduce
+from collections import deque
+from collections import namedtuple
+from collections import OrderedDict
+
 import matplotlib
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
@@ -9,22 +21,7 @@ from miros import signals
 from miros import HsmWithQueues
 from miros import return_status
 
-import math
-import pathlib
-from collections import deque
-from collections import namedtuple
-
-import csv
-from functools import reduce
-import os
-import re
-
-from scipy import fft
-from functools import reduce
-
-import pandas as pd
-from collections import OrderedDict
-import datetime as dt
+import is_prime
 
 White   = 0
 Black   = 1
@@ -75,69 +72,13 @@ def build_rule_function(number):
     return masks[number]
   return fn
 
-rule_30_fn = build_rule_function(30)
-assert rule_30_fn(False, False, False) == False
-assert rule_30_fn(False, False, True) == True
-assert rule_30_fn(False, True, False) == True
-assert rule_30_fn(False, True, True) == True
-assert rule_30_fn(True, False, False) == True
-assert rule_30_fn(True, False, True) == False
-assert rule_30_fn(True, True, False) == False
-assert rule_30_fn(True, True, True) == False
-
 # credit agf from stackoverlow
 # https://stackoverflow.com/questions/6800193/what-is-the-most-efficient-way-of-finding-all-the-factors-of-a-number-in-python 
 def factors(n):
   return set(reduce(list.__add__,
     ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0 )))
 
-period_lookup = {}
-period_lookup[(10, 3)] = 51
-period_lookup[(10, 4)] = 14
-period_lookup[(10, 5)] = 16
-period_lookup[(10, 6)] = 35
-period_lookup[(10, 7)] = 30
-period_lookup[(10, 8)] = 65
-period_lookup[(10, 9)] = 24
-period_lookup[(10, 10)] = 52
-period_lookup[(10, 11)] = 110
-period_lookup[(10, 12)] = 30
-period_lookup[(10, 13)] = 32
-period_lookup[(11, 4)] = 24
-period_lookup[(11, 5)] = 57
-period_lookup[(11, 6)] = 28
-period_lookup[(11, 7)] = 30
-period_lookup[(11, 8)] = 32
-period_lookup[(11, 9)] = 27
-period_lookup[(11, 10)] = 36
-period_lookup[(11, 11)] = 42
-period_lookup[(11, 12)] = 80
-period_lookup[(11, 13)] = 42
-period_lookup[(11, 14)] = 84
-period_lookup[(11, 15)] = 46
-period_lookup[(11, 16)] = 48
-period_lookup[(11, 17)] = 50
-period_lookup[(11, 18)] = 52
-period_lookup[(12, 4)] = 24
-period_lookup[(12, 5)] = 26
-period_lookup[(12, 6)] = 39
-period_lookup[(12, 7)] = 58
-period_lookup[(12, 8)] = 19
-period_lookup[(12, 9)] = 14
-period_lookup[(12, 10)] = 46
-period_lookup[(12, 11)] = 36
-period_lookup[(12, 12)] = 53
-period_lookup[(12, 13)] = 32
-period_lookup[(12, 14)] = 42
-period_lookup[(13, 10)] = 139
-period_lookup[(13, 15)] = 157
-period_lookup[(13, 21)] = 197
-period_lookup[(14, 3)] = 43
-period_lookup[(14, 4)] = 13
-period_lookup[(14, 9)] = 176
-period_lookup[(14, 10)] = 271
-
-def automata_period(num1, num2):
+def aggregate_period(num1, num2):
   num1 = int(num1)
   num2 = int(num2)
   product = num1 * num2
@@ -148,8 +89,23 @@ def automata_period(num1, num2):
 
 def periodicity(*args):
   list_of_variables = args
-  unique_pattern_durations = [period_lookup[(pattern.width, pattern.depth)] for pattern in list_of_variables]
-  return reduce(automata_period, unique_pattern_durations)
+
+  # contract
+  def check_element(element):
+    assert(hasattr(element, 'cells_per_generation')==True)
+    assert(hasattr(element, 'queue_depth')==True)
+  [check_element(element) for element in list_of_variables]
+
+  def period_lookup(width, depth):
+    result_as_list_list = automata_periodicity(width=width, start_depth=depth)
+    period = result_as_list_list[depth]['period']
+    return period
+
+  unique_pattern_durations = [
+    period_lookup(width=pattern.cells_per_generation, depth=pattern.queue_depth) for pattern in list_of_variables
+  ]
+  period = reduce(aggregate_period, unique_pattern_durations)
+  return period
 
 class Wall(HsmWithQueues):
 
@@ -236,14 +192,6 @@ def white(cell, e):
       status = cell.trans(black)
     else:
       status = return_status.HANDLED
-
-    #if((cell.right.color == 'black' and
-    #    cell.left.color == 'white') or 
-    #   (cell.right.color == 'white' and
-    #    cell.left.color == 'black')):
-    #  status = cell.trans(black)
-    #else:
-    #  status = return_status.HANDLED
   else:
     cell.temp.fun = cell.top
     status = return_status.SUPER
@@ -397,12 +345,15 @@ class OneDCellularAutomata():
 
     # start most of the machines in white except for the one at the
     # intial_condition_index
+    initial_bulk_colors = []
     for i in range(1, len(self.machines)-1):
       if i != self.initial_condition_index:
         self.machines[i].start_at(white)
+        initial_bulk_colors.append(self.machines[i].color_number())
       else:
         self.machines[i].start_at(black)
-
+        initial_bulk_colors.append(self.machines[i].color_number())
+    Z[-1, 1:-1] = initial_bulk_colors
     # we have created a generation, so count down by one
     self.generation = self.generations-1
 
@@ -844,6 +795,7 @@ class OneDCellularAutonomataWallRecursion(OneDCellularAutomata):
       queue_depth = 1
     else:
       queue_depth = queue_depth
+    self.queue_depth = queue_depth
 
     self.core_colors = deque(maxlen=queue_depth)
     self.core_code = []
@@ -1122,14 +1074,17 @@ def automata_periodicity(width, start_depth, stop_depth=None):
     
   .. code-block:: python
      
-     results = automata_period(width=22, start_depth=6, stop_depth=9)
+     results = aggregate_period(width=22, start_depth=6, stop_depth=9)
 
      print(results[5])  #=> IndexError exception
 
-     print(results[6])  # =>
+     print(results)  # =>
      [{'repeat?': False, 'queue_depth': 6, 'period': 195, 'width_of_automata': 22},
       {'repeat?': False, 'queue_depth': 7, 'period': 133, 'width_of_automata': 22},
       {'repeat?': False, 'queue_depth': 8, 'period': 167, 'width_of_automata': 22}]
+
+     print(results[6])  # =>
+     {'repeat?': False, 'queue_depth': 6, 'period': 195, 'width_of_automata': 22}
 
      print(results[7])  # => ...
      print(results[8])  # => ...
@@ -1396,24 +1351,13 @@ class Canvas():
   def close(self):
     plt.close(self.fig)
 
-class ODCAVariable(OneDCellularAutonomataWallRecursion):
-  def __init__(self, width, depth, generations):
-    self.width = width
-    self.depth = depth
-    super().__init__(
-      generations=generations,
-      machine_cls=Rule30WithQueueDepth,
-      cells_per_generation=width,
-      queue_depth=depth,
-      )
-
 class ODCAXEquation:
   def __init__(self, odcavar, generations, width_alg='max'):
     self.automata = [odcavar]
     self.width_alg = width_alg
-    self.width = odcavar.width
-    self.max_width = odcavar.width
-    self.min_width = odcavar.width
+    self.cells_per_generation = odcavar.cells_per_generation
+    self.max_width = odcavar.cells_per_generation
+    self.min_width = odcavar.cells_per_generation
     self.generations = generations
 
   def load(self, odcarvar):
@@ -1421,7 +1365,8 @@ class ODCAXEquation:
     # the max_width is the maximum max_width
     self.max_width = max([automata.cells_per_generation for automata in self.automata])
     self.min_width = min([automata.cells_per_generation for automata in self.automata])
-    self.width = self.max_width if self.width_alg == 'max' else self.min_width
+    self.cells_per_generation = self.max_width if self.width_alg == 'max' else self.min_width
+    self.cells_per_generation = self.cells_per_generation
 
   def __xor__(self, vector):
     self.load(vector)
@@ -1464,135 +1409,62 @@ class ODCAXEquation:
       self.for_pattern_search = [[] for i in range(self.min_width)]
       self.Z = np.full([self.generations, self.min_width], Black, dtype=np.bool)
 
-  def make_generation_coroutine(self):
-
-    def xor_row(row1, row2):
-      if self.width_alg == 'max':
-        padded_row1 = self.pad_width_to_max(row1)
-        padded_row2 = self.pad_width_to_max(row2)
-      else:
-        padded_row1 = self.trim_width_to_min(row1)
-        padded_row2 = self.trim_width_to_min(row2)
-      return np.bitwise_xor(padded_row1, padded_row2)
-
-    # to multiply on variable's current generation by another 
-    # self.for_pattern_search = [[] for i in range(self.automata[0].cells_per_generation)]
-    self.initial_state()
     [obj.initial_state() for obj in self.automata]
     # pull the last row vector out of each automata and make a list of vectors
     # multiply each of these vectors together for the row_result
     g = self.automata[0].generation
-    self.row_result = reduce(xor_row, [obj.Z[g, :] for obj in self.automata])
+    self.row_result = reduce(self.xor_row, [obj.Z[g, :] for obj in self.automata])
     self.Z[0, :] = self.row_result
     self.generation = self.automata[0].generation
+
+  def xor_row(self, row1, row2):
+    if self.width_alg == 'max':
+      padded_row1 = self.pad_width_to_max(row1)
+      padded_row2 = self.pad_width_to_max(row2)
+    else:
+      padded_row1 = self.trim_width_to_min(row1)
+      padded_row2 = self.trim_width_to_min(row2)
+    return np.bitwise_xor(padded_row1, padded_row2)
+
+  def make_generation_coroutine(self):
+
+    self.initial_state()
     yield self.Z
     while True:
+      g = self.automata[0].generation  # since the other iterator incremented it
       [obj.next_generation() for obj in self.automata]
       # pull the last row vector out of each automata and make a list of vectors
       # multiply each of these vectors together for the row_result
-      g = self.automata[0].generation
-      self.row_result = reduce(xor_row, [obj.Z[g+1, :] for obj in self.automata])
-      self.Z[g+1, :] = self.row_result
-      self.generation = self.automata[0].generation
-      row_number = self.generation
-      for col_number in range(self.Z.shape[1]):
-        cell_color = self.Z[row_number, col_number]
-        self.for_pattern_search[col_number].append(1.0 if abs(cell_color - Black)<0.01 else 0.0)
+      if g != self.generations:
+        self.Z[g, :] = reduce(self.xor_row, [obj.Z[g, :] for obj in self.automata])
+        self.generation = self.automata[0].generation
+        for col_number in range(self.Z.shape[1]):
+          cell_color = self.Z[g, col_number]
+          self.for_pattern_search[col_number].append(1.0 if cell_color else 0.0)
       yield self.Z
-
-# Goal, for a given width, find the optimal queue depth:
-# 
-# Need a new class that can detect it's own periodicity using two masks.  We
-# have done both before, so you will have to dig into your old code and find:
-# * mask1 for finding the n-phenomenon across the bulk
-# * mask2 (new) for finding the n-phenomenon at the middle point
-# * size of the queue length
-
-# Goal, for a given width and queue depth, find the recursive wall object's
-# periodicity
-#
-# Create another class that can make itself based on either provided parameters
-# or by building the previous object to find it's queue length.  The resulting
-# object will be used to build recursive wall objects.
-# 
-# Create another class that can find the periodicity of the previous object, or
-# find if it has petered out by masking for the n-phenomenon
-#
-
-# Build a table, which will have a maximum size and will grow by one when it has
-# run out of periodicity.  When it needs to drop a number, it will drop the
-# number that is the smallest non-prime
-
-# The table will be used to figure out which combinations of machines should be
-# xor'd together.  Look at set hacking to get an idea about how this will be
-# done, the new pioneered number will be combined with every other item in the
-# list, with a number of picks == round(len(table)/2)
-
-# question, does the n-phenomenon express itself exactly the same in reverse?
-# rule 135
-
-# Since the entropy generator will need access to computation, turn it into a
-# daemon and have it send entropy back to the main process
-
 
 if __name__ == '__main__':
 
-  ll = ListLike(8, 10, [8, 9])
+  generations = 1000
 
-  #item = ll[7]
-  item_8 = ll[8]
-  item_9 = ll[9]
-  #item = ll[10]
+  # the 210 periodicity of a b c snuck through in the a b c d analysis
+  a = OneDCellularAutonomataWallRecursion(cells_per_generation=10, queue_depth=4, generations=generations)
+  b = OneDCellularAutonomataWallRecursion(cells_per_generation=10, queue_depth=7, generations=generations)
+  c = OneDCellularAutonomataWallRecursion(cells_per_generation=11, queue_depth=3, generations=generations)
+  d = OneDCellularAutonomataWallRecursion(cells_per_generation=12, queue_depth=5, generations=generations)
 
-  width       = 22
-  queue_depth = 2
-  generations = 1500
-
-  # 16 * 28 * 26 = 11648
-  # 16 * 39 = 624
-  # 35 * 39 = 1366
-  # 10, 4: 14
-  # 10, 5: 16
-  # 10, 6: 35
-  # 11, 4: 24
-  # 11, 5: 57
-  # 11, 6: 28
-  # 12, 5: 26
-  # 13, 4: 9
-  # 13, 5: 12
-  # 13, 6: 46
-  # (10, 5)^(10, 6) = 560
-  # (11, 5)^(11, 6) = 1596
-  # (10, 5)^(11, 5) = 912
-  # (10, 6)^(11, 6) = 980
-  # (10, 5)^(13, 5) = 192
-  # (10, 5)^(13, 5) = 48
-  # (10, 5)^(13, 5)^(11, 5) = 16*12*57 = 10944 (too big to see), but 912
-  # 10944/912 -> 12
-  # (10, 4)^(11, 4)^(13^4) = 14*24*9 = 3024
-  # 2*7 2*2*2*3 3*3
-  # changing the order didn't increase the periodicity
-  # 456
-  # (10, 5)^(13, 5)^(11, 5)^(12, 5) = 456
-  # 16, 12, 57, 26 ?-> 456
-
-  a = ODCAVariable(width=22, depth=2, generations=generations)
-  #b = ODCAVariable(width=10, depth=5, generations=generations)
-  #c = ODCAVariable(width=10, depth=12, generations=generations)
-  #d = ODCAVariable(width=12, depth=5, generations=generations)
-
+  # a ^ b ^ c == c ^ b ^ a
   # commutative (order) indifferent
   # associative (grouping) indifferent
-  equation = ODCAXEquation(a, generations=generations, width_alg='min')
-  #equation ^= b
-  #equation ^= c
+  equation = ODCAXEquation(c, generations=generations, width_alg='min')
+  equation ^= b
+  equation ^= a
+  equation ^= d
 
-  #print(periodicity(a, b, c))
-  #print(periodicity(a, b, c, d))
-  #exit(0)
+  print(periodicity(b, c, a, d))
 
-  #equation ^= d
-
+  width = 22
+  queue_depth = 2
   ma = OneDCellularAutonomataWallRecursion(
     generations=generations,
     machine_cls=Rule30WithQueueDepth,
@@ -1601,7 +1473,8 @@ if __name__ == '__main__':
     )
 
   filename = "equation_rec_walls_{}_queue_{}_gen_{}".format(width, queue_depth, generations)
-  eco = Canvas(ma)
+  thing_to_render = equation
+  eco = Canvas(thing_to_render)
   eco.run_animation(generations, interval=100)
   movie_filename = '{}.mp4'.format(filename)
   eco.save(movie_filename)
@@ -1618,8 +1491,8 @@ if __name__ == '__main__':
   # as to find where the real pattern repetitions take place
   max_c_indexs = []
   column_correlations = []
-  for i in range(ma.cells_per_generation):
-    column_correlations.append(autocorrelate(ma.for_pattern_search[i]))
+  for i in range(thing_to_render.cells_per_generation):
+    column_correlations.append(autocorrelate(thing_to_render.for_pattern_search[i]))
     max_index = np.argmax(column_correlations[-1])
     max_c_indexs.append(max_index)
 
@@ -1629,8 +1502,8 @@ if __name__ == '__main__':
 
   fig = plt.figure()
   autocorrelation_filename = "autocorrection.pdf"
-  #plt.plot(pattern_index, collective_autocorrelation_fft_product)
-  #plt.plot(pattern_index, cc)
+  ##plt.plot(pattern_index, collective_autocorrelation_fft_product)
+  ##plt.plot(pattern_index, cc)
   plt.plot([i for i, j in enumerate(collective_correlations)], collective_correlations)
   plt.savefig(autocorrelation_filename, dpi=300)
 

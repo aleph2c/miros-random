@@ -54,3 +54,8 @@ def test_period_discovery_without_mask():
   assert(result[2]['period'] == 113)
   assert(result[2]['width_of_automata'] == 22)
 
+@pytest.mark.long
+def test_period_discovery_long_running():
+  for width in range(27, 28):
+    automata_periodicity(width, 16, 30)
+
