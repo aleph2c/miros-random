@@ -497,3 +497,5 @@ width_of_automata,queue_depth,period,repeat?
 27,22,2300,False
 27,23,2132,True
 27,24,5734,False
+27,25,2903,True
+27,26,21222,False
