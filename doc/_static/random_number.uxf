@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>2380</x>
-      <y>490</y>
-      <w>175</w>
-      <h>21</h>
-    </coordinates>
-    <panel_attributes>OneDCellularAutomataPeriodTable</panel_attributes>
-    <additional_attributes/>
-  </element>
+  <zoom_level>12</zoom_level>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2765</x>
-      <y>497</y>
-      <w>182</w>
-      <h>77</h>
+      <x>4740</x>
+      <y>852</y>
+      <w>312</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>Uses cycles to discover periodicity
 (mask and autocorrelation)
@@ -32,10 +21,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2709</x>
-      <y>462</y>
-      <w>70</w>
-      <h>63</h>
+      <x>4644</x>
+      <y>792</y>
+      <w>120</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -44,10 +33,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2359</x>
-      <y>147</y>
-      <w>182</w>
-      <h>21</h>
+      <x>4044</x>
+      <y>252</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Rule</panel_attributes>
     <additional_attributes/>
@@ -55,10 +44,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2359</x>
-      <y>105</y>
-      <w>182</w>
-      <h>21</h>
+      <x>4044</x>
+      <y>180</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Wall</panel_attributes>
     <additional_attributes/>
@@ -66,10 +55,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2359</x>
-      <y>189</y>
-      <w>182</w>
-      <h>21</h>
+      <x>4044</x>
+      <y>324</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Rule30</panel_attributes>
     <additional_attributes/>
@@ -77,10 +66,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>84</y>
-      <w>182</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>144</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>WallLeftWhiteRightWhite</panel_attributes>
     <additional_attributes/>
@@ -88,10 +77,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>119</y>
-      <w>182</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>204</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>WallLeftWhiteRightBlack</panel_attributes>
     <additional_attributes/>
@@ -99,10 +88,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>154</y>
-      <w>182</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>264</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>WallLeftBlackRightWhite</panel_attributes>
     <additional_attributes/>
@@ -110,10 +99,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>189</y>
-      <w>182</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>324</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>WallLeftBlackRightBlack</panel_attributes>
     <additional_attributes/>
@@ -121,10 +110,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2289</x>
-      <y>119</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3924</x>
+      <y>204</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=black
 fg=white
@@ -134,10 +123,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>119</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>204</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=white
 fg=black
@@ -148,10 +137,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>84</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>144</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=white
 fg=black
@@ -162,10 +151,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2289</x>
-      <y>154</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3924</x>
+      <y>264</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=white
 fg=black
@@ -176,10 +165,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>154</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>264</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=black
 fg=white
@@ -189,10 +178,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2289</x>
-      <y>84</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3924</x>
+      <y>144</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=white
 fg=black
@@ -203,10 +192,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2128</x>
-      <y>189</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3648</x>
+      <y>324</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=black
 fg=white
@@ -216,10 +205,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2289</x>
-      <y>189</y>
-      <w>21</w>
-      <h>21</h>
+      <x>3924</x>
+      <y>324</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=black
 fg=white
@@ -229,10 +218,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLSyncBarVertical</id>
     <coordinates>
-      <x>2324</x>
-      <y>77</y>
-      <w>14</w>
-      <h>161</h>
+      <x>3984</x>
+      <y>132</y>
+      <w>24</w>
+      <h>276</h>
     </coordinates>
     <panel_attributes>template=txt
 title=titletext
@@ -243,10 +232,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2324</x>
-      <y>105</y>
-      <w>49</w>
-      <h>21</h>
+      <x>3984</x>
+      <y>180</y>
+      <w>84</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -255,10 +244,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2303</x>
-      <y>84</y>
-      <w>42</w>
-      <h>21</h>
+      <x>3948</x>
+      <y>144</y>
+      <w>72</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -267,10 +256,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2303</x>
-      <y>119</y>
-      <w>42</w>
-      <h>21</h>
+      <x>3948</x>
+      <y>204</y>
+      <w>72</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -279,10 +268,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2303</x>
-      <y>154</y>
-      <w>42</w>
-      <h>21</h>
+      <x>3948</x>
+      <y>264</y>
+      <w>72</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -291,10 +280,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2303</x>
-      <y>189</y>
-      <w>42</w>
-      <h>21</h>
+      <x>3948</x>
+      <y>324</y>
+      <w>72</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -303,10 +292,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2443</x>
-      <y>119</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4188</x>
+      <y>204</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -315,10 +304,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2443</x>
-      <y>161</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4188</x>
+      <y>276</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -327,10 +316,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2786</x>
-      <y>84</y>
-      <w>21</w>
-      <h>189</h>
+      <x>4776</x>
+      <y>144</y>
+      <w>36</w>
+      <h>324</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3
@@ -340,10 +329,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2674</x>
-      <y>84</y>
-      <w>133</w>
-      <h>189</h>
+      <x>4584</x>
+      <y>144</y>
+      <w>228</w>
+      <h>324</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3
@@ -353,10 +342,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2674</x>
-      <y>28</y>
-      <w>77</w>
-      <h>77</h>
+      <x>4584</x>
+      <y>48</y>
+      <w>132</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3
@@ -366,10 +355,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2730</x>
-      <y>28</y>
-      <w>77</w>
-      <h>77</h>
+      <x>4680</x>
+      <y>48</y>
+      <w>132</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3
@@ -379,10 +368,10 @@ fg=blue</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2674</x>
+      <x>4584</x>
       <y>0</y>
-      <w>21</w>
-      <h>98</h>
+      <w>36</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -391,10 +380,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2786</x>
+      <x>4776</x>
       <y>0</y>
-      <w>21</w>
-      <h>98</h>
+      <w>36</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -403,10 +392,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2674</x>
-      <y>28</y>
-      <w>140</w>
-      <h>21</h>
+      <x>4584</x>
+      <y>48</y>
+      <w>240</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -415,10 +404,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2688</x>
-      <y>7</y>
-      <w>105</w>
-      <h>21</h>
+      <x>4608</x>
+      <y>12</y>
+      <w>180</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>cells_per_generation
 style=wordwrap
@@ -428,10 +417,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>2681</x>
-      <y>105</y>
-      <w>14</w>
-      <h>14</h>
+      <x>4596</x>
+      <y>180</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=cyan
@@ -441,10 +430,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2800</x>
-      <y>49</y>
-      <w>161</w>
-      <h>21</h>
+      <x>4800</x>
+      <y>84</y>
+      <w>276</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>cells_per_generation/2
 style=wordwrap
@@ -454,10 +443,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2793</x>
-      <y>28</y>
-      <w>70</w>
-      <h>21</h>
+      <x>4788</x>
+      <y>48</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -466,10 +455,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2793</x>
-      <y>84</y>
-      <w>63</w>
-      <h>21</h>
+      <x>4788</x>
+      <y>144</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -478,10 +467,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2828</x>
-      <y>28</y>
-      <w>21</w>
-      <h>35</h>
+      <x>4848</x>
+      <y>48</y>
+      <w>36</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -490,10 +479,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2828</x>
-      <y>63</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4848</x>
+      <y>108</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 layer=3</panel_attributes>
@@ -502,10 +491,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2730</x>
-      <y>28</y>
-      <w>21</w>
-      <h>161</h>
+      <x>4680</x>
+      <y>48</y>
+      <w>36</w>
+      <h>276</h>
     </coordinates>
     <panel_attributes>lt=&lt;-&gt;
 layer=3</panel_attributes>
@@ -514,10 +503,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2730</x>
-      <y>175</y>
-      <w>21</w>
-      <h>98</h>
+      <x>4680</x>
+      <y>300</y>
+      <w>36</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -526,10 +515,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2639</x>
-      <y>105</y>
-      <w>35</w>
-      <h>21</h>
+      <x>4524</x>
+      <y>180</y>
+      <w>60</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>theta
 style=wordwrap
@@ -539,10 +528,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2653</x>
-      <y>7</y>
-      <w>42</w>
-      <h>21</h>
+      <x>4548</x>
+      <y>12</y>
+      <w>72</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -551,10 +540,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2786</x>
-      <y>7</y>
-      <w>49</w>
-      <h>21</h>
+      <x>4776</x>
+      <y>12</y>
+      <w>84</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -563,10 +552,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2751</x>
-      <y>70</y>
-      <w>35</w>
-      <h>21</h>
+      <x>4716</x>
+      <y>120</y>
+      <w>60</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>45 *
 style=wordwrap
@@ -576,10 +565,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2744</x>
-      <y>84</y>
-      <w>63</w>
-      <h>21</h>
+      <x>4704</x>
+      <y>144</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -588,10 +577,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2758</x>
-      <y>42</y>
-      <w>28</w>
-      <h>35</h>
+      <x>4728</x>
+      <y>72</y>
+      <w>48</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -600,10 +589,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2751</x>
-      <y>84</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4716</x>
+      <y>144</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -612,10 +601,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2688</x>
-      <y>91</y>
-      <w>35</w>
-      <h>28</h>
+      <x>4608</x>
+      <y>156</y>
+      <w>60</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -624,10 +613,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2660</x>
-      <y>105</y>
-      <w>35</w>
-      <h>21</h>
+      <x>4560</x>
+      <y>180</y>
+      <w>60</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -636,10 +625,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2674</x>
-      <y>84</y>
-      <w>21</w>
-      <h>182</h>
+      <x>4584</x>
+      <y>144</y>
+      <w>36</w>
+      <h>312</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -648,10 +637,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2709</x>
-      <y>259</y>
-      <w>63</w>
-      <h>21</h>
+      <x>4644</x>
+      <y>444</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>deque_len
 style=wordwrap
@@ -661,10 +650,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2359</x>
-      <y>273</y>
-      <w>182</w>
-      <h>21</h>
+      <x>4044</x>
+      <y>468</y>
+      <w>312</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>OneDCellularAutomata</panel_attributes>
     <additional_attributes/>
@@ -672,10 +661,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2205</x>
-      <y>476</y>
-      <w>126</w>
-      <h>21</h>
+      <x>3780</x>
+      <y>816</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=red
 angle_and_depth</panel_attributes>
@@ -684,10 +673,10 @@ angle_and_depth</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2100</x>
-      <y>84</y>
-      <w>273</w>
-      <h>210</h>
+      <x>3600</x>
+      <y>144</y>
+      <w>468</w>
+      <h>360</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>370.0;280.0;10.0;280.0;10.0;10.0;40.0;10.0</additional_attributes>
@@ -695,10 +684,10 @@ angle_and_depth</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2555</x>
-      <y>56</y>
-      <w>119</w>
-      <h>35</h>
+      <x>4380</x>
+      <y>96</y>
+      <w>204</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>Mask to half this time!
 layer=3</panel_attributes>
@@ -707,10 +696,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2443</x>
-      <y>287</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4188</x>
+      <y>492</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -719,10 +708,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2443</x>
-      <y>203</y>
-      <w>21</w>
-      <h>84</h>
+      <x>4188</x>
+      <y>348</y>
+      <w>36</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
@@ -730,10 +719,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2380</x>
-      <y>315</y>
-      <w>154</w>
-      <h>21</h>
+      <x>4080</x>
+      <y>540</y>
+      <w>264</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Rule30WithQueueDepth</panel_attributes>
     <additional_attributes/>
@@ -741,10 +730,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2352</x>
-      <y>357</y>
-      <w>203</w>
-      <h>21</h>
+      <x>4032</x>
+      <y>612</y>
+      <w>348</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>OneDCellularAutomataWithRecursiveWalls</panel_attributes>
     <additional_attributes/>
@@ -752,10 +741,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2443</x>
-      <y>329</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4188</x>
+      <y>564</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -764,10 +753,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLSyncBarVertical</id>
     <coordinates>
-      <x>2079</x>
-      <y>70</y>
-      <w>14</w>
-      <h>161</h>
+      <x>3564</x>
+      <y>120</y>
+      <w>24</w>
+      <h>276</h>
     </coordinates>
     <panel_attributes>template=txt
 title=titletext
@@ -778,10 +767,10 @@ bg=red</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2079</x>
-      <y>84</y>
-      <w>49</w>
-      <h>21</h>
+      <x>3564</x>
+      <y>144</y>
+      <w>84</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -790,10 +779,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2079</x>
-      <y>119</y>
-      <w>63</w>
-      <h>21</h>
+      <x>3564</x>
+      <y>204</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -802,10 +791,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2079</x>
-      <y>189</y>
-      <w>63</w>
-      <h>21</h>
+      <x>3564</x>
+      <y>324</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -814,10 +803,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2079</x>
-      <y>154</y>
-      <w>63</w>
-      <h>21</h>
+      <x>3564</x>
+      <y>264</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-
 layer=3</panel_attributes>
@@ -826,10 +815,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2443</x>
-      <y>371</y>
-      <w>21</w>
-      <h>49</h>
+      <x>4188</x>
+      <y>636</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -838,10 +827,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2520</x>
-      <y>105</y>
-      <w>21</w>
-      <h>21</h>
+      <x>4320</x>
+      <y>180</y>
+      <w>36</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=orange
 fg=white
@@ -851,10 +840,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2737</x>
-      <y>308</y>
-      <w>196</w>
-      <h>42</h>
+      <x>4692</x>
+      <y>528</y>
+      <w>336</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Given a width, look up, or discover theta
 then calculate the optimal queue 
@@ -865,10 +854,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2100</x>
-      <y>476</y>
-      <w>70</w>
-      <h>21</h>
+      <x>3600</x>
+      <y>816</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>CSV File</panel_attributes>
     <additional_attributes/>
@@ -876,10 +865,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2527</x>
-      <y>315</y>
-      <w>224</w>
-      <h>21</h>
+      <x>4332</x>
+      <y>540</y>
+      <w>384</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -888,10 +877,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2716</x>
-      <y>581</y>
-      <w>238</w>
-      <h>56</h>
+      <x>4656</x>
+      <y>996</y>
+      <w>408</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Rotating table of width, depth to periodicity lookup
 
@@ -908,22 +897,22 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2548</x>
-      <y>504</y>
-      <w>182</w>
-      <h>105</h>
+      <x>4200</x>
+      <y>912</y>
+      <w>480</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;10.0;240.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;380.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2352</x>
-      <y>560</y>
-      <w>105</w>
-      <h>21</h>
+      <x>4032</x>
+      <y>912</y>
+      <w>180</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>MixingSpecification</panel_attributes>
     <additional_attributes/>
@@ -931,22 +920,22 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2415</x>
-      <y>504</y>
-      <w>21</w>
-      <h>70</h>
+      <x>4140</x>
+      <y>864</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2317</x>
-      <y>609</y>
-      <w>91</w>
-      <h>21</h>
+      <x>3948</x>
+      <y>1044</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ODCAXEquation</panel_attributes>
     <additional_attributes/>
@@ -954,44 +943,44 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2037</x>
-      <y>357</y>
-      <w>329</w>
-      <h>280</h>
+      <x>3492</x>
+      <y>612</y>
+      <w>564</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
-    <additional_attributes>450.0;10.0;10.0;10.0;10.0;300.0;360.0;300.0;360.0;380.0;400.0;380.0</additional_attributes>
+    <additional_attributes>450.0;10.0;10.0;10.0;10.0;300.0;360.0;300.0;360.0;380.0;380.0;380.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2387</x>
-      <y>574</y>
-      <w>21</w>
-      <h>49</h>
+      <x>4068</x>
+      <y>936</y>
+      <w>36</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2450</x>
-      <y>560</y>
-      <w>63</w>
-      <h>21</h>
+      <x>4008</x>
+      <y>1068</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2499</x>
-      <y>560</y>
-      <w>70</w>
-      <h>21</h>
+      <x>3960</x>
+      <y>1128</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Canvas</panel_attributes>
     <additional_attributes/>
@@ -999,10 +988,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2611</x>
-      <y>651</y>
-      <w>287</w>
-      <h>126</h>
+      <x>4476</x>
+      <y>1116</y>
+      <w>492</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>Using the technique described in set_hacking create
 combinations of odcaxEquation specifications.
@@ -1023,22 +1012,22 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2450</x>
-      <y>574</y>
-      <w>175</w>
-      <h>105</h>
+      <x>4200</x>
+      <y>936</y>
+      <w>300</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;10.0;230.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;230.0;170.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2429</x>
-      <y>609</y>
-      <w>70</w>
-      <h>21</h>
+      <x>4164</x>
+      <y>1044</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Rand</panel_attributes>
     <additional_attributes/>
@@ -1046,21 +1035,21 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2436</x>
-      <y>574</y>
-      <w>21</w>
-      <h>49</h>
+      <x>4176</x>
+      <y>936</y>
+      <w>36</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2163</x>
-      <y>476</y>
-      <w>56</w>
-      <h>21</h>
+      <x>3708</x>
+      <y>816</y>
+      <w>96</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1069,10 +1058,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2205</x>
-      <y>462</y>
-      <w>63</w>
-      <h>21</h>
+      <x>3780</x>
+      <y>792</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>memoized
 style=wordwrap
@@ -1082,10 +1071,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2261</x>
-      <y>455</y>
-      <w>21</w>
-      <h>35</h>
+      <x>3876</x>
+      <y>780</y>
+      <w>36</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1094,10 +1083,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2807</x>
-      <y>105</y>
-      <w>301</w>
-      <h>56</h>
+      <x>4812</x>
+      <y>180</y>
+      <w>516</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>
 adjacent = self.nothing_at_row - self.cells_per_generation / 2.0
@@ -1111,10 +1100,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2058</x>
-      <y>399</y>
-      <w>273</w>
-      <h>21</h>
+      <x>3528</x>
+      <y>684</y>
+      <w>468</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>OneDCellularAutomataWithAngleDiscoveryAtMiddle</panel_attributes>
     <additional_attributes/>
@@ -1122,10 +1111,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2163</x>
-      <y>287</y>
-      <w>217</w>
-      <h>126</h>
+      <x>3708</x>
+      <y>492</y>
+      <w>372</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
@@ -1134,10 +1123,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2191</x>
-      <y>441</y>
-      <w>168</w>
-      <h>21</h>
+      <x>3756</x>
+      <y>756</y>
+      <w>288</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>AngleAndDepthDiscovery</panel_attributes>
     <additional_attributes/>
@@ -1145,10 +1134,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2100</x>
-      <y>413</y>
-      <w>119</w>
-      <h>84</h>
+      <x>3600</x>
+      <y>708</y>
+      <w>204</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1157,10 +1146,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2212</x>
-      <y>413</y>
-      <w>21</w>
-      <h>42</h>
+      <x>3792</x>
+      <y>708</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -1168,10 +1157,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2373</x>
-      <y>448</y>
-      <w>168</w>
-      <h>21</h>
+      <x>4068</x>
+      <y>768</y>
+      <w>288</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>PeriodicityDiscovery</panel_attributes>
     <additional_attributes/>
@@ -1179,10 +1168,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2373</x>
-      <y>406</y>
-      <w>168</w>
-      <h>21</h>
+      <x>4068</x>
+      <y>696</y>
+      <w>288</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ODCAWRPeriodDetection</panel_attributes>
     <additional_attributes/>
@@ -1190,10 +1179,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2436</x>
-      <y>420</y>
-      <w>21</w>
-      <h>42</h>
+      <x>4176</x>
+      <y>720</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -1201,10 +1190,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2590</x>
-      <y>448</y>
-      <w>126</w>
-      <h>21</h>
+      <x>4440</x>
+      <y>768</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=red
 automata_periodicity</panel_attributes>
@@ -1213,10 +1202,10 @@ automata_periodicity</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2744</x>
-      <y>448</y>
-      <w>70</w>
-      <h>21</h>
+      <x>4704</x>
+      <y>768</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>CSV File</panel_attributes>
     <additional_attributes/>
@@ -1224,10 +1213,10 @@ automata_periodicity</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2709</x>
-      <y>448</y>
-      <w>49</w>
-      <h>21</h>
+      <x>4644</x>
+      <y>768</y>
+      <w>84</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1236,10 +1225,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2534</x>
-      <y>406</y>
-      <w>77</w>
-      <h>56</h>
+      <x>4344</x>
+      <y>696</y>
+      <w>132</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1248,10 +1237,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2534</x>
-      <y>448</y>
-      <w>70</w>
-      <h>21</h>
+      <x>4344</x>
+      <y>768</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1260,10 +1249,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2597</x>
-      <y>434</y>
-      <w>63</w>
-      <h>21</h>
+      <x>4452</x>
+      <y>744</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>memoized
 style=wordwrap
@@ -1273,10 +1262,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2205</x>
-      <y>511</y>
-      <w>126</w>
-      <h>21</h>
+      <x>3780</x>
+      <y>876</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>bg=red
 is_prime</panel_attributes>
@@ -1285,34 +1274,34 @@ is_prime</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2548</x>
-      <y>462</y>
-      <w>56</w>
-      <h>49</h>
+      <x>4248</x>
+      <y>792</y>
+      <w>216</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>60.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>160.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2324</x>
-      <y>476</y>
-      <w>70</w>
-      <h>35</h>
+      <x>3984</x>
+      <y>816</y>
+      <w>120</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>80.0;30.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;20.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2324</x>
-      <y>497</y>
-      <w>70</w>
-      <h>35</h>
+      <x>3984</x>
+      <y>852</y>
+      <w>120</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1321,10 +1310,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2821</x>
-      <y>1141</y>
-      <w>329</w>
-      <h>42</h>
+      <x>4836</x>
+      <y>1956</y>
+      <w>564</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>(n-1)!/((n-r-2)!(r-1)!
 where n is the number of table elements
@@ -1336,10 +1325,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2821</x>
-      <y>1197</y>
-      <w>266</w>
-      <h>42</h>
+      <x>4836</x>
+      <y>2052</y>
+      <w>456</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>d/dx((10!)/((10-x)!*x!) graphed has x intercept at 5
 d/dx((9!)/((9-x)!*x!) graphed has x intercept at 4.5
@@ -1351,10 +1340,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>3115</x>
-      <y>1260</y>
-      <w>266</w>
-      <h>42</h>
+      <x>5340</x>
+      <y>2160</y>
+      <w>456</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>d/dx((8!)/((8-x)!*x!) graphed has x intercept at 4
 d/dx((7!)/((6-x)!(x-1)! has x intercept at 3.5
@@ -1365,10 +1354,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>3115</x>
-      <y>1190</y>
-      <w>266</w>
-      <h>42</h>
+      <x>5340</x>
+      <y>2040</y>
+      <w>456</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>d/dx((10!)/((10-x)!*x!) graphed has x intercept at 5
 d/dx((9!)/((8-x)!(x-1)! has x intercept at 4.5
@@ -1379,10 +1368,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>3115</x>
-      <y>1225</y>
-      <w>266</w>
-      <h>42</h>
+      <x>5340</x>
+      <y>2100</y>
+      <w>456</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>d/dx((9!)/((9-x)!*x!) graphed has x intercept at 4.5
 d/dx((8!)/((7-x)!(x-1)! has x intercept at 4
@@ -1393,10 +1382,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3038</x>
-      <y>1197</y>
-      <w>91</w>
-      <h>21</h>
+      <x>5208</x>
+      <y>2052</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1405,10 +1394,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3031</x>
-      <y>1211</y>
-      <w>98</w>
-      <h>35</h>
+      <x>5196</x>
+      <y>2076</y>
+      <w>168</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1417,10 +1406,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3024</x>
-      <y>1225</y>
-      <w>105</w>
-      <h>63</h>
+      <x>5184</x>
+      <y>2100</y>
+      <w>180</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1429,10 +1418,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>2821</x>
-      <y>1295</y>
-      <w>217</w>
-      <h>35</h>
+      <x>4836</x>
+      <y>2220</y>
+      <w>372</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>interfer that: (n-1)!/((n-r-2)!(r-1)! is maximized
 at r = (n-1)/2
@@ -1444,10 +1433,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>3402</x>
-      <y>1176</y>
-      <w>231</w>
-      <h>35</h>
+      <x>5832</x>
+      <y>2016</y>
+      <w>396</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>As a rule the maximum number of combinations
 will occur at (n-1/2)
@@ -1457,10 +1446,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>3332</x>
-      <y>1176</y>
-      <w>84</w>
-      <h>35</h>
+      <x>5712</x>
+      <y>2016</y>
+      <w>144</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -1469,10 +1458,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>3087</x>
-      <y>805</y>
-      <w>196</w>
-      <h>63</h>
+      <x>5292</x>
+      <y>1380</y>
+      <w>336</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Manage the mixing table
 * know how much room it has left
@@ -1487,63 +1476,39 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1351</x>
-      <y>595</y>
-      <w>154</w>
-      <h>105</h>
+      <x>1632</x>
+      <y>1188</y>
+      <w>984</w>
+      <h>696</h>
     </coordinates>
-    <panel_attributes>*PioneerDispatcher*
+    <panel_attributes>*MineAutomataSpecDispatcher*
 --
 cells_per_generation
 queue_depth
 pioneer
-layer=1</panel_attributes>
+layer=1
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1372</x>
-      <y>714</y>
-      <w>21</w>
-      <h>49</h>
+      <x>1812</x>
+      <y>1224</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=()-[v]
 layer=3</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1365</x>
-      <y>672</y>
-      <w>35</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=[^]-(
-layer=3</panel_attributes>
-    <additional_attributes>20.0;10.0;20.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1358</x>
-      <y>651</y>
-      <w>140</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-Event Processor
-layer=2</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLState</id>
     <coordinates>
-      <x>980</x>
-      <y>742</y>
-      <w>525</w>
-      <h>364</h>
+      <x>1680</x>
+      <y>1272</y>
+      <w>900</w>
+      <h>588</h>
     </coordinates>
     <panel_attributes>*pd_work_manager*
 --
@@ -1555,16 +1520,17 @@ Pioneer_Request as e /
   pioneer_mg.defer(e)
 valign=top
 layer=2
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>980</x>
-      <y>693</y>
-      <w>259</w>
-      <h>28</h>
+      <x>2088</x>
+      <y>1020</y>
+      <w>444</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>PioneerRequestSpec = namedtuple(
   'PioneerSpec', ['cells_per_generation', 'queue_depth'])
@@ -1574,10 +1540,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1638</x>
-      <y>756</y>
-      <w>259</w>
-      <h>77</h>
+      <x>3036</x>
+      <y>1632</y>
+      <w>288</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>PioneerResultSpec = namedtuple(
   'PioneerSpec', [
@@ -1591,10 +1557,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1582</x>
-      <y>854</y>
-      <w>329</w>
-      <h>217</h>
+      <x>2724</x>
+      <y>1224</y>
+      <w>564</w>
+      <h>372</h>
     </coordinates>
     <panel_attributes>*pw_begin_search*
 --
@@ -1608,8 +1574,8 @@ entry /
   p_spec = PioneerResultSpec(
     cells_per_generation=cells_per_generation,
     queue_depth=queue_depth,
-    period=result[cells_per_generation]['period'],
-    repeat=result[cells_per_generation]['repeat?'])
+    period=result[queue_depth]['period'],
+    repeat=result[queue_depth]['repeat?'])
 
   pioneer.publish(Event(signal=signals.Pioneering_Complete,
     payload=p_spec)
@@ -1623,50 +1589,25 @@ layer=2
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1575</x>
-      <y>644</y>
-      <w>154</w>
-      <h>98</h>
+      <x>2676</x>
+      <y>1128</y>
+      <w>648</w>
+      <h>492</h>
     </coordinates>
-    <panel_attributes>*PioneerWorker*
+    <panel_attributes>*MineAutomataSpecWorker*
 --
 cell_per_generation
-queu_depth
+queue_depth
 layer=1</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1582</x>
-      <y>693</y>
-      <w>140</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-Event Processor
-layer=2</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>1596</x>
-      <y>714</y>
-      <w>35</w>
-      <h>126</h>
-    </coordinates>
-    <panel_attributes>lt=[^]-(
-layer=3</panel_attributes>
-    <additional_attributes>20.0;10.0;20.0;150.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1603</x>
-      <y>826</y>
-      <w>21</w>
-      <h>49</h>
+      <x>2844</x>
+      <y>1176</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=()-[v]
 layer=3</panel_attributes>
@@ -1675,10 +1616,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1008</x>
-      <y>917</y>
-      <w>154</w>
-      <h>105</h>
+      <x>1728</x>
+      <y>1572</y>
+      <w>264</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>*pd_idle*
 --
@@ -1694,10 +1635,10 @@ layer=2
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1197</x>
-      <y>784</y>
-      <w>287</w>
-      <h>98</h>
+      <x>2052</x>
+      <y>1344</y>
+      <w>492</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>*pd_create_worker*
 --
@@ -1715,10 +1656,10 @@ layer=2
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1225</x>
-      <y>938</y>
-      <w>259</w>
-      <h>133</h>
+      <x>2100</x>
+      <y>1608</y>
+      <w>444</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>*pd_waiting*
 --
@@ -1732,10 +1673,10 @@ layer=2
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1022</x>
-      <y>1050</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1752</x>
+      <y>1800</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>type=initial
 layer=3</panel_attributes>
@@ -1744,10 +1685,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1022</x>
-      <y>1015</y>
-      <w>21</w>
-      <h>49</h>
+      <x>1752</x>
+      <y>1740</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -1756,10 +1697,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1323</x>
-      <y>875</y>
-      <w>49</w>
-      <h>77</h>
+      <x>2268</x>
+      <y>1500</y>
+      <w>84</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>waiting
 lt=-&gt;
@@ -1769,10 +1710,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1057</x>
-      <y>875</y>
-      <w>182</w>
-      <h>56</h>
+      <x>1812</x>
+      <y>1500</y>
+      <w>312</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -1781,10 +1722,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1099</x>
-      <y>1015</y>
-      <w>140</w>
-      <h>56</h>
+      <x>1884</x>
+      <y>1740</y>
+      <w>240</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Pioneering_Complete
 lt=-&gt;
@@ -1794,10 +1735,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1022</x>
-      <y>840</y>
-      <w>189</w>
-      <h>63</h>
+      <x>1752</x>
+      <y>1440</y>
+      <w>324</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Pioneer_Request as e /
   pioneer_mg.cells_per_generation = \
@@ -1811,10 +1752,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1211</x>
-      <y>1057</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2076</x>
+      <y>1812</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -1824,10 +1765,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1568</x>
-      <y>1015</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2700</x>
+      <y>1500</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=red
@@ -1837,10 +1778,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>980</x>
-      <y>595</y>
-      <w>259</w>
-      <h>77</h>
+      <x>1632</x>
+      <y>1020</y>
+      <w>444</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>Creates another thread (called pioneer)
 that does a slow expensive blocking search... 
@@ -1854,10 +1795,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>826</x>
-      <y>875</y>
-      <w>133</w>
-      <h>42</h>
+      <x>1368</x>
+      <y>1488</y>
+      <w>228</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.
 &lt;&lt;pattern&gt;&gt;
@@ -1868,34 +1809,34 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>819</y>
-      <w>63</w>
-      <h>77</h>
+      <x>1560</x>
+      <y>1404</y>
+      <w>156</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;90.0;70.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>938</x>
-      <y>903</y>
-      <w>91</w>
-      <h>70</h>
+      <x>1560</x>
+      <y>1536</y>
+      <w>204</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;150.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1575</x>
-      <y>595</y>
-      <w>259</w>
-      <h>42</h>
+      <x>2676</x>
+      <y>1044</y>
+      <w>444</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>Run a long blocking search, then publish result and
 stop the machine so that it will be garbage collected
@@ -1906,12 +1847,12 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1386</x>
-      <y>1148</y>
-      <w>196</w>
-      <h>70</h>
+      <x>2376</x>
+      <y>2028</y>
+      <w>336</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>PioneerDispatcher
+    <panel_attributes>MineAutomataSpecDispatcher
 symbol=substate
 layer=2</panel_attributes>
     <additional_attributes/>
@@ -1919,10 +1860,10 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1575</x>
-      <y>1190</y>
-      <w>147</w>
-      <h>28</h>
+      <x>2700</x>
+      <y>2040</y>
+      <w>252</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Pioneer_Complete
 lt=-&gt;
@@ -1932,10 +1873,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1561</x>
-      <y>1155</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2676</x>
+      <y>2040</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=red
@@ -1945,10 +1886,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1393</x>
-      <y>1197</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2388</x>
+      <y>2052</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -1958,10 +1899,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1596</x>
-      <y>1113</y>
-      <w>259</w>
-      <h>77</h>
+      <x>2736</x>
+      <y>1908</y>
+      <w>444</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>PioneerResultSpec = namedtuple(
   'PioneerSpec', [
@@ -1975,10 +1916,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1407</x>
-      <y>1211</y>
-      <w>98</w>
-      <h>63</h>
+      <x>2412</x>
+      <y>2076</y>
+      <w>168</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Pioneer_Request
 lt=-&gt;
@@ -1988,21 +1929,21 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1337</x>
-      <y>1169</y>
-      <w>63</w>
-      <h>21</h>
+      <x>2280</x>
+      <y>2052</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1225</x>
-      <y>1162</y>
-      <w>119</w>
-      <h>21</h>
+      <x>2088</x>
+      <y>2040</y>
+      <w>204</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>PioneerWorker</panel_attributes>
     <additional_attributes/>
@@ -2010,10 +1951,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1421</x>
-      <y>1253</y>
-      <w>252</w>
-      <h>28</h>
+      <x>2436</x>
+      <y>2148</y>
+      <w>432</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>PioneerRequestSpec = namedtuple(
   'PioneerSpec', ['cells_per_generation', 'queue_depth'])
@@ -2023,12 +1964,12 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1386</x>
-      <y>1344</y>
-      <w>196</w>
-      <h>70</h>
+      <x>2376</x>
+      <y>2364</y>
+      <w>336</w>
+      <h>60</h>
     </coordinates>
-    <panel_attributes>DepthSearchDispatcher
+    <panel_attributes>MineAutomataDepthLimits
 symbol=substate
 layer=2</panel_attributes>
     <additional_attributes/>
@@ -2036,10 +1977,10 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1575</x>
-      <y>1386</y>
-      <w>154</w>
-      <h>28</h>
+      <x>2700</x>
+      <y>2376</y>
+      <w>264</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Depth_Search_Complete
 lt=-&gt;
@@ -2049,10 +1990,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1561</x>
-      <y>1351</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2676</x>
+      <y>2376</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=red
@@ -2062,10 +2003,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1393</x>
-      <y>1393</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2388</x>
+      <y>2388</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -2075,10 +2016,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1407</x>
-      <y>1407</y>
-      <w>126</w>
-      <h>63</h>
+      <x>2412</x>
+      <y>2412</y>
+      <w>216</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Depth_Search_Request
 lt=-&gt;
@@ -2088,10 +2029,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1337</x>
-      <y>1365</y>
-      <w>63</w>
-      <h>21</h>
+      <x>2292</x>
+      <y>2388</y>
+      <w>108</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>70.0;10.0;10.0;10.0</additional_attributes>
@@ -2099,10 +2040,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1225</x>
-      <y>1358</y>
-      <w>119</w>
-      <h>21</h>
+      <x>2100</x>
+      <y>2376</y>
+      <w>204</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>DepthSearchWorker</panel_attributes>
     <additional_attributes/>
@@ -2110,10 +2051,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1421</x>
-      <y>1449</y>
-      <w>217</w>
-      <h>28</h>
+      <x>2436</x>
+      <y>2484</y>
+      <w>372</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>DepthRequestSpec = namedtuple(
   'DepthRequestSpec', ['cells_per_generation'])
@@ -2123,10 +2064,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1596</x>
-      <y>1309</y>
-      <w>259</w>
-      <h>70</h>
+      <x>2736</x>
+      <y>2244</y>
+      <w>444</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>DepthResultSpec = namedtuple(
   'AngleAndDepthResultSpec', [
@@ -2139,10 +2080,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1316</x>
-      <y>1547</y>
-      <w>266</w>
-      <h>105</h>
+      <x>2256</x>
+      <y>2712</y>
+      <w>456</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>NewTableItemCtor
 symbol=substate
@@ -2152,10 +2093,10 @@ layer=2</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1323</x>
-      <y>1631</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2268</x>
+      <y>2796</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -2165,10 +2106,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1561</x>
-      <y>1554</y>
-      <w>14</w>
-      <h>14</h>
+      <x>2676</x>
+      <y>2736</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=red
@@ -2178,10 +2119,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1547</x>
-      <y>1645</y>
-      <w>210</w>
-      <h>91</h>
+      <x>2652</x>
+      <y>2820</y>
+      <w>360</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Request_Table_Item(last_width, last_depth)
 lt=-&gt;
@@ -2191,10 +2132,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1575</x>
-      <y>1582</y>
-      <w>154</w>
-      <h>28</h>
+      <x>2700</x>
+      <y>2712</y>
+      <w>264</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>New_Table_Item
 lt=-&gt;
@@ -2204,10 +2145,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1589</x>
-      <y>1505</y>
-      <w>259</w>
-      <h>77</h>
+      <x>2724</x>
+      <y>2580</y>
+      <w>444</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>PioneerResultSpec = namedtuple(
   'PioneerSpec', [
@@ -2221,10 +2162,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>546</x>
-      <y>1568</y>
-      <w>553</w>
-      <h>322</h>
+      <x>936</x>
+      <y>2688</y>
+      <w>948</w>
+      <h>552</h>
     </coordinates>
     <panel_attributes>*table_search*
 --
@@ -2237,10 +2178,10 @@ layer=2
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>763</x>
-      <y>1477</y>
-      <w>196</w>
-      <h>49</h>
+      <x>1620</x>
+      <y>2388</y>
+      <w>336</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>RX/TX New_Table_Entries
 
@@ -2253,12 +2194,12 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>973</x>
-      <y>1323</y>
-      <w>154</w>
-      <h>168</h>
+      <x>240</x>
+      <y>2484</y>
+      <w>1716</w>
+      <h>1092</h>
     </coordinates>
-    <panel_attributes>*NewTableItemCtor*
+    <panel_attributes>*MonotonicAutomataSpecSearchEngine*
 --
 current_width
 current_depth
@@ -2273,10 +2214,10 @@ layer=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>994</x>
-      <y>1505</y>
-      <w>21</w>
-      <h>49</h>
+      <x>492</x>
+      <y>2580</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=()-[v]
 layer=3</panel_attributes>
@@ -2285,35 +2226,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>987</x>
-      <y>1463</y>
-      <w>35</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=[^]-(
-layer=3</panel_attributes>
-    <additional_attributes>20.0;10.0;20.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>980</x>
-      <y>1442</y>
-      <w>140</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>symbol=component
-Event Processor
-layer=2</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1428</x>
-      <y>1645</y>
-      <w>133</w>
-      <h>63</h>
+      <x>2448</x>
+      <y>2820</y>
+      <w>228</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Depth_Search_Complete
 lt=-&gt;
@@ -2323,10 +2239,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1330</x>
-      <y>1645</y>
-      <w>98</w>
-      <h>63</h>
+      <x>2280</x>
+      <y>2820</y>
+      <w>168</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Pioneer_Complete
 lt=-&gt;
@@ -2336,10 +2252,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1575</x>
-      <y>1603</y>
-      <w>133</w>
-      <h>28</h>
+      <x>2700</x>
+      <y>2748</y>
+      <w>228</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Depth_Search_Request
 lt=-&gt;
@@ -2349,10 +2265,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1575</x>
-      <y>1624</y>
-      <w>133</w>
-      <h>28</h>
+      <x>2700</x>
+      <y>2784</y>
+      <w>228</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Pioneer_Request
 lt=-&gt;
@@ -2362,10 +2278,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>763</x>
-      <y>1407</y>
-      <w>196</w>
-      <h>63</h>
+      <x>1272</x>
+      <y>2364</y>
+      <w>336</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>RequestTableItemSpec = namedtuple(
   'RequestTableItemSpec', [
@@ -2378,10 +2294,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>581</x>
-      <y>1603</y>
-      <w>476</w>
-      <h>245</h>
+      <x>996</x>
+      <y>2748</y>
+      <w>816</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes>*discover_queue_depth_from_width*
 --
@@ -2393,10 +2309,10 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>637</x>
-      <y>1820</y>
-      <w>105</w>
-      <h>84</h>
+      <x>1092</x>
+      <y>3120</y>
+      <w>180</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>pioneer_new_depth
 lt=-&gt;
@@ -2406,10 +2322,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>987</x>
-      <y>1841</y>
-      <w>105</w>
-      <h>63</h>
+      <x>1692</x>
+      <y>3156</y>
+      <w>180</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>pioneer_new_width
 lt=-&gt;
@@ -2419,10 +2335,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>602</x>
-      <y>1715</y>
-      <w>441</w>
-      <h>112</h>
+      <x>1032</x>
+      <y>2940</y>
+      <w>756</w>
+      <h>192</h>
     </coordinates>
     <panel_attributes>*discover_table_item*
 --
@@ -2441,10 +2357,10 @@ layer=2
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>665</x>
-      <y>1687</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1140</x>
+      <y>2892</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>type=initial
 layer=3</panel_attributes>
@@ -2453,10 +2369,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>672</x>
-      <y>1687</y>
-      <w>350</w>
-      <h>21</h>
+      <x>1152</x>
+      <y>2892</y>
+      <w>600</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2465,10 +2381,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>679</x>
-      <y>1652</y>
-      <w>336</w>
-      <h>42</h>
+      <x>1164</x>
+      <y>2832</y>
+      <w>576</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>drs = DepthRequestSpec(
   cells_per_generation=pd.current_width)
@@ -2480,10 +2396,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>826</x>
-      <y>1631</y>
-      <w>217</w>
-      <h>28</h>
+      <x>1416</x>
+      <y>2796</y>
+      <w>372</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>DepthRequestSpec = namedtuple(
   'DepthRequestSpec', ['cells_per_generation'])
@@ -2493,10 +2409,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>1008</x>
-      <y>1687</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1728</x>
+      <y>2892</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>type=flow_final
 layer=3</panel_attributes>
@@ -2505,10 +2421,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>651</x>
-      <y>1687</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1116</x>
+      <y>2892</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=red
@@ -2518,10 +2434,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>791</x>
-      <y>1820</y>
-      <w>21</w>
-      <h>84</h>
+      <x>1356</x>
+      <y>3120</y>
+      <w>36</w>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2530,10 +2446,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>798</x>
-      <y>1848</y>
-      <w>182</w>
-      <h>56</h>
+      <x>1368</x>
+      <y>3168</y>
+      <w>312</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>Depth_Search_Complete as e /
   pd.max_depth_for_current_width = \
@@ -2545,10 +2461,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>917</x>
-      <y>1946</y>
-      <w>182</w>
-      <h>70</h>
+      <x>1572</x>
+      <y>3336</y>
+      <w>312</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>DepthResultSpec = namedtuple(
   'AngleAndDepthResultSpec', [
@@ -2561,10 +2477,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>798</x>
-      <y>1890</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1368</x>
+      <y>3240</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -2574,10 +2490,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>791</x>
-      <y>1736</y>
-      <w>245</w>
-      <h>28</h>
+      <x>1356</x>
+      <y>2976</y>
+      <w>420</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>PioneerRequestSpec = namedtuple(
   'PioneerSpec', ['cells_per_generation', 'queue_depth'])
@@ -2587,10 +2503,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>1015</x>
-      <y>854</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1740</x>
+      <y>1464</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -2600,10 +2516,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>966</x>
-      <y>805</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1656</x>
+      <y>1380</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -2613,10 +2529,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>154</x>
-      <y>1533</y>
-      <w>973</w>
-      <h>574</h>
+      <x>264</x>
+      <y>2628</y>
+      <w>1668</w>
+      <h>924</h>
     </coordinates>
     <panel_attributes>*table_search_common*
 --
@@ -2637,10 +2553,10 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>189</x>
-      <y>1687</y>
-      <w>42</w>
-      <h>224</h>
+      <x>324</x>
+      <y>2892</y>
+      <w>72</w>
+      <h>384</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2649,10 +2565,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>196</x>
-      <y>1841</y>
-      <w>245</w>
-      <h>63</h>
+      <x>336</x>
+      <y>3156</y>
+      <w>420</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Request_Table_Item as e /
   pd.last_cells_per_generations = \
@@ -2665,10 +2581,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>217</x>
-      <y>1680</y>
-      <w>28</w>
-      <h>28</h>
+      <x>372</x>
+      <y>2880</y>
+      <w>48</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>type=decision
 layer=3</panel_attributes>
@@ -2677,10 +2593,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>238</x>
-      <y>1687</y>
-      <w>322</w>
-      <h>21</h>
+      <x>408</x>
+      <y>2892</y>
+      <w>552</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2689,10 +2605,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>217</x>
-      <y>1757</y>
-      <w>28</w>
-      <h>28</h>
+      <x>372</x>
+      <y>3012</y>
+      <w>48</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>type=decision
 layer=3</panel_attributes>
@@ -2701,10 +2617,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>1701</y>
-      <w>21</w>
-      <h>70</h>
+      <x>384</x>
+      <y>2916</y>
+      <w>36</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2713,10 +2629,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>238</x>
-      <y>1764</y>
-      <w>322</w>
-      <h>21</h>
+      <x>408</x>
+      <y>3024</y>
+      <w>552</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2725,10 +2641,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>238</x>
-      <y>1645</y>
-      <w>308</w>
-      <h>49</h>
+      <x>408</x>
+      <y>2820</y>
+      <w>528</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>[pd.last_cells_per_generation &gt; pd.current_cells_per_generation] /
   pd.current_width = pd.last_cells_per_generations
@@ -2741,10 +2657,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>238</x>
-      <y>1722</y>
-      <w>273</w>
-      <h>49</h>
+      <x>408</x>
+      <y>2952</y>
+      <w>468</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>[pd.last_queue_depth &gt; max_depth_for_current_width] /
   pd.current_width = pd.lastest_cells_per_generations + 1
@@ -2757,10 +2673,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>1778</y>
-      <w>336</w>
-      <h>77</h>
+      <x>384</x>
+      <y>3048</y>
+      <w>576</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -2769,10 +2685,10 @@ layer=3</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>238</x>
-      <y>1806</y>
-      <w>273</w>
-      <h>35</h>
+      <x>408</x>
+      <y>3096</y>
+      <w>468</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>pd.current_depth += 1
 pd.post_lifo(Event(signal=signals.pioneer_new_depth))
@@ -2783,10 +2699,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>1883</y>
-      <w>63</w>
-      <h>70</h>
+      <x>1164</x>
+      <y>3228</y>
+      <w>108</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>to_waiting
 lt=-&gt;
@@ -2796,10 +2712,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>658</x>
-      <y>1939</y>
-      <w>245</w>
-      <h>91</h>
+      <x>1128</x>
+      <y>3324</y>
+      <w>420</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>*waiting*
 --
@@ -2817,10 +2733,10 @@ layer=2
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>203</x>
-      <y>1918</y>
-      <w>224</w>
-      <h>126</h>
+      <x>348</x>
+      <y>3288</y>
+      <w>384</w>
+      <h>216</h>
     </coordinates>
     <panel_attributes>*publish*
 --
@@ -2841,10 +2757,10 @@ layer=2
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>476</x>
-      <y>1981</y>
-      <w>168</w>
-      <h>77</h>
+      <x>816</x>
+      <y>3396</y>
+      <w>288</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>PioneerResultSpec = namedtuple(
   'PioneerSpec', [
@@ -2858,10 +2774,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>420</x>
-      <y>1960</y>
-      <w>252</w>
-      <h>28</h>
+      <x>720</x>
+      <y>3360</y>
+      <w>432</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>publish
 lt=-&gt;
@@ -2871,10 +2787,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>644</x>
-      <y>1953</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1104</x>
+      <y>3348</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=green
@@ -2884,10 +2800,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>189</x>
-      <y>1946</y>
-      <w>14</w>
-      <h>14</h>
+      <x>324</x>
+      <y>3336</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>
 bg=red
@@ -2898,9 +2814,9 @@ layer=3</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>0</x>
-      <y>1785</y>
-      <w>133</w>
-      <h>42</h>
+      <y>3060</y>
+      <w>228</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=.
 &lt;&lt;pattern&gt;&gt;
@@ -2911,10 +2827,10 @@ layer=2</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>56</x>
-      <y>1596</y>
-      <w>112</w>
-      <h>203</h>
+      <x>96</x>
+      <y>2736</y>
+      <w>192</w>
+      <h>348</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -2923,10 +2839,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>63</x>
-      <y>1820</y>
-      <w>161</w>
-      <h>238</h>
+      <x>108</x>
+      <y>3120</y>
+      <w>276</w>
+      <h>408</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -2935,10 +2851,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>1813</y>
-      <w>98</w>
-      <h>49</h>
+      <x>192</x>
+      <y>3108</y>
+      <w>168</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -2947,10 +2863,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>175</x>
-      <y>1897</y>
-      <w>280</w>
-      <h>161</h>
+      <x>300</x>
+      <y>3252</y>
+      <w>480</w>
+      <h>276</h>
     </coordinates>
     <panel_attributes>*ready_for_request*
 --
@@ -2963,10 +2879,10 @@ layer=2
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>224</x>
-      <y>2079</y>
-      <w>14</w>
-      <h>14</h>
+      <x>840</x>
+      <y>3300</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>type=initial
 layer=3</panel_attributes>
@@ -2975,22 +2891,22 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>224</x>
-      <y>2051</y>
-      <w>21</w>
-      <h>49</h>
+      <x>768</x>
+      <y>3300</y>
+      <w>96</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1554</x>
-      <y>1946</y>
-      <w>140</w>
-      <h>21</h>
+      <x>2664</x>
+      <y>3336</y>
+      <w>240</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>NewTableItemCtor
 bg=red</panel_attributes>
@@ -2999,10 +2915,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1624</x>
-      <y>2044</y>
-      <w>140</w>
-      <h>21</h>
+      <x>2880</x>
+      <y>3444</y>
+      <w>240</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>PioneerDispatcher
 bg=red</panel_attributes>
@@ -3011,10 +2927,10 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1456</x>
-      <y>2002</y>
-      <w>140</w>
-      <h>21</h>
+      <x>2448</x>
+      <y>3432</y>
+      <w>240</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>DepthSearchDispatcher
 bg=red</panel_attributes>
@@ -3023,21 +2939,21 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1554</x>
-      <y>1890</y>
-      <w>140</w>
-      <h>21</h>
+      <x>2664</x>
+      <y>3240</y>
+      <w>240</w>
+      <h>36</h>
     </coordinates>
-    <panel_attributes>MixerTable</panel_attributes>
+    <panel_attributes>MixingSpecification</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1610</x>
-      <y>1904</y>
-      <w>21</w>
-      <h>56</h>
+      <x>2760</x>
+      <y>3264</y>
+      <w>36</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -3046,34 +2962,34 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1505</x>
-      <y>1960</y>
-      <w>91</w>
-      <h>56</h>
+      <x>2532</x>
+      <y>3360</y>
+      <w>204</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;60.0;110.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;150.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1645</x>
-      <y>1960</y>
-      <w>70</w>
-      <h>98</h>
+      <x>2820</x>
+      <y>3360</y>
+      <w>156</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>80.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>110.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1295</x>
-      <y>1974</y>
-      <w>126</w>
-      <h>91</h>
+      <x>2184</x>
+      <y>3384</y>
+      <w>216</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>Find the maximum useful 
 queue depth for a given 
@@ -3088,10 +3004,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1799</x>
-      <y>2037</y>
-      <w>126</w>
-      <h>63</h>
+      <x>3204</x>
+      <y>3456</y>
+      <w>216</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Determine if a automata
 has a period and what that
@@ -3104,10 +3020,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1729</x>
-      <y>1925</y>
-      <w>182</w>
-      <h>63</h>
+      <x>2964</x>
+      <y>3300</y>
+      <w>312</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>Search for new table entries
 only return table items that
@@ -3120,10 +3036,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1687</x>
-      <y>1953</y>
-      <w>56</w>
-      <h>21</h>
+      <x>2892</x>
+      <y>3348</y>
+      <w>96</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -3132,10 +3048,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1729</x>
-      <y>1771</y>
-      <w>224</w>
-      <h>140</h>
+      <x>2964</x>
+      <y>3036</y>
+      <w>384</w>
+      <h>240</h>
     </coordinates>
     <panel_attributes>Creates combinations of automata
 and requests new table enteries
@@ -3155,34 +3071,34 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1414</x>
-      <y>2002</y>
-      <w>56</w>
-      <h>21</h>
+      <x>2388</x>
+      <y>3432</y>
+      <w>84</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1757</x>
-      <y>2044</y>
-      <w>56</w>
-      <h>21</h>
+      <x>3108</x>
+      <y>3444</y>
+      <w>120</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
-    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1687</x>
-      <y>1862</y>
-      <w>56</w>
-      <h>56</h>
+      <x>2892</x>
+      <y>3192</y>
+      <w>96</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -3191,10 +3107,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2205</x>
-      <y>1008</y>
-      <w>511</w>
-      <h>329</h>
+      <x>3780</x>
+      <y>1728</y>
+      <w>876</w>
+      <h>564</h>
     </coordinates>
     <panel_attributes>*coroutine_built*
 --
@@ -3210,10 +3126,10 @@ layer=2
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>1988</x>
-      <y>938</y>
-      <w>749</w>
-      <h>420</h>
+      <x>3408</x>
+      <y>1608</y>
+      <w>1284</w>
+      <h>720</h>
     </coordinates>
     <panel_attributes>*machine_table_mixer_specification_common_behaviors*
 --
@@ -3229,10 +3145,10 @@ layer=2
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1981</x>
-      <y>1120</y>
-      <w>238</w>
-      <h>21</h>
+      <x>3396</x>
+      <y>1920</y>
+      <w>408</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -3241,10 +3157,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2688</x>
-      <y>910</y>
-      <w>21</w>
-      <h>49</h>
+      <x>4608</x>
+      <y>1560</y>
+      <w>36</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=()-[v]
 layer=3</panel_attributes>
@@ -3253,12 +3169,12 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1967</x>
-      <y>819</y>
-      <w>798</w>
-      <h>560</h>
+      <x>3372</x>
+      <y>1404</y>
+      <w>1368</w>
+      <h>960</h>
     </coordinates>
-    <panel_attributes>*MixingSpecification*
+    <panel_attributes>*CombinatoricalAutomataSpecMixer*
 --
 _sync_spec_buffer   # bridge between threads
 _async_current_spec # the current asycn specification
@@ -3276,10 +3192,10 @@ layer=0</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>1988</x>
-      <y>1085</y>
-      <w>217</w>
-      <h>42</h>
+      <x>3408</x>
+      <y>1860</y>
+      <w>372</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>New_Table_Item as e / 
   if(e.payload.machine_profile['repeat?'])
@@ -3292,10 +3208,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2009</x>
-      <y>1134</y>
-      <w>189</w>
-      <h>77</h>
+      <x>3444</x>
+      <y>1944</y>
+      <w>324</w>
+      <h>132</h>
     </coordinates>
     <panel_attributes>PioneerResultSpec = namedtuple(
   'PioneerSpec', [
@@ -3309,10 +3225,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2044</x>
-      <y>777</y>
-      <w>70</w>
-      <h>21</h>
+      <x>3504</x>
+      <y>1332</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>SpecMixer</panel_attributes>
     <additional_attributes/>
@@ -3320,10 +3236,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2072</x>
-      <y>791</y>
-      <w>21</w>
-      <h>42</h>
+      <x>3552</x>
+      <y>1356</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
@@ -3331,10 +3247,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLState</id>
     <coordinates>
-      <x>2261</x>
-      <y>1085</y>
-      <w>427</w>
-      <h>203</h>
+      <x>3876</x>
+      <y>1860</y>
+      <w>732</w>
+      <h>348</h>
     </coordinates>
     <panel_attributes>*generate_specification*
 --
@@ -3363,10 +3279,10 @@ layer=2
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>2226</x>
-      <y>1148</y>
-      <w>14</w>
-      <h>14</h>
+      <x>3816</x>
+      <y>1968</y>
+      <w>24</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>type=initial
 layer=3</panel_attributes>
@@ -3375,10 +3291,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2226</x>
-      <y>1148</y>
-      <w>49</w>
-      <h>21</h>
+      <x>3816</x>
+      <y>1968</y>
+      <w>84</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 layer=3</panel_attributes>
@@ -3387,10 +3303,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2009</x>
-      <y>1218</y>
-      <w>189</w>
-      <h>56</h>
+      <x>3444</x>
+      <y>2088</y>
+      <w>324</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>RequestTableItemSpec = namedtuple(
   'RequestTableItemSpec', [
@@ -3402,10 +3318,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1561</x>
-      <y>1701</y>
-      <w>189</w>
-      <h>56</h>
+      <x>2676</x>
+      <y>2916</y>
+      <w>324</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>RequestTableItemSpec = namedtuple(
   'RequestTableItemSpec', [
@@ -3417,10 +3333,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2317</x>
-      <y>1281</y>
-      <w>266</w>
-      <h>49</h>
+      <x>3972</x>
+      <y>2196</y>
+      <w>456</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>make_next_specification
 lt=-&gt;
@@ -3430,10 +3346,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2191</x>
-      <y>1197</y>
-      <w>98</w>
-      <h>63</h>
+      <x>3756</x>
+      <y>2052</y>
+      <w>168</w>
+      <h>108</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -3442,10 +3358,10 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2191</x>
-      <y>1239</y>
-      <w>91</w>
-      <h>28</h>
+      <x>3756</x>
+      <y>2124</y>
+      <w>156</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=.
 layer=3</panel_attributes>
@@ -3454,10 +3370,10 @@ layer=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1967</x>
-      <y>777</y>
-      <w>70</w>
-      <h>21</h>
+      <x>3372</x>
+      <y>1332</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>Factory</panel_attributes>
     <additional_attributes/>
@@ -3465,13 +3381,96 @@ layer=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1988</x>
-      <y>791</y>
-      <w>21</w>
-      <h>42</h>
+      <x>3408</x>
+      <y>1356</y>
+      <w>36</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 layer=3</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>4080</x>
+      <y>840</y>
+      <w>180</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>MixerTable</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2796</x>
+      <y>3516</y>
+      <w>240</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>PioneerWorker
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2892</x>
+      <y>3468</y>
+      <w>120</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=3</panel_attributes>
+    <additional_attributes>10.0;40.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2484</x>
+      <y>3516</y>
+      <w>240</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>DepthSeachWorker
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2544</x>
+      <y>3456</y>
+      <w>72</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=3</panel_attributes>
+    <additional_attributes>40.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2688</x>
+      <y>3360</y>
+      <w>108</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=3</panel_attributes>
+    <additional_attributes>10.0;130.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2784</x>
+      <y>3360</y>
+      <w>84</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=3</panel_attributes>
+    <additional_attributes>50.0;130.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

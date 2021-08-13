@@ -3,13 +3,15 @@
   *What defines Success?*
   
   Development Speed!
+  
   A clear design that can be used in the example doc
   A test suite to confirm the various parts
   A second repo that will keep the big files out of the miros project
   A complete random number example that demonstrates miros statecharts.
 
   *What is the problem?*
-  A lot of moving parts, big files, theory needs to be understood.  Marshaling
+  
+  A lot of moving parts, big files, theory needs to be understood.  Marshalling
   required.
 
   *Evidence that contradicts Assumptions:*
@@ -26,27 +28,27 @@
   *Assumptions:*
 
 = Decide =
+
   *Idea/Hypotheses for random number workflow: >=5*
-  * [X] Create Repo
-  * [X] Create Doc
-  * [X] Move code into new repo
-  * [X] Link cellular automata docs to other repo
-  * [X] Remove cellular automata stuff from miros
-  * [X] Create Test Suite
-  * [X] Move plans into new repo
-  * [X] Update miros to point to new repo... remove cellular automata and random
-        files to make it smaller
-  * [X] Port Design Document
-  * [ ] Panda goals:
-    * [ ] load csv file
-    * [ ] create csv file with panda data
-    * [ ] concatenate csv file with new row data
-    * [ ] put prime data into csv
-    * [ ] put depth data into csv
-    * [ ] put width/depth periodicity into csv
-  * [ ] Create Development Plan
-  * [ ] Update of angle discovery
-  * [ ] Automata periodicity discovery
+  * [ ] Rename things now that you know what they do 
+    * combinatorical_automata_spec_mixer
+    * monotonic_automata_spec_search_engine
+    * mine_automata_spec
+      * mine_automata_spec_dispatcher
+      * mine_automata_spec_worker
+    * mine_automata_depth_limits
+      * mine_automata_depth_limits_dispatcher
+      * mine_automata_depth_limits_worker
+  * [ ] Using the randon_number design doc, build with tests:
+    * [ ] PioneerDispatcherChart
+    * [ ] PioneerWorker
+    * [ ] DepthSearchDispatcherChart
+    * [ ] NewTableItemCtorChart
+    * [ ] SpecMixer
+  * [ ] Add the mixer_proto as its own example to miros
+  * [ ] Using the random_number design doc, build with tests:
+    * [ ] MixingSpecification
+  * [ ] Design Rand based on ODCAXEquation and the MixingSpecification
   
   *Chosen Idea/Hypothesis*
 

@@ -57,5 +57,5 @@ def test_period_discovery_without_mask():
 @pytest.mark.long
 def test_period_discovery_long_running():
   for width in range(27, 28):
-    automata_periodicity(width, 16, 30)
+    automata_periodicity(width, 16, 27)
 

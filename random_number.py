@@ -16,12 +16,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
+import is_prime
+
 from miros import Event
 from miros import signals
+from miros import Factory
 from miros import HsmWithQueues
 from miros import return_status
-
-import is_prime
 
 White   = 0
 Black   = 1
@@ -31,6 +32,10 @@ depth_key = 'queue_depth'
 period_key = 'period'
 repeat_key = 'repeat?'
 angle_key = 'angle_of_n_phenomenon_on_left'
+
+PioneerResultSpec = namedtuple(
+  'PioneerResultSpec', 
+  ['cells_per_generation', 'queue_depth', 'period', 'loop'])
 
 def autocorrelate(x):
   '''
@@ -1442,6 +1447,47 @@ class ODCAXEquation:
           cell_color = self.Z[g, col_number]
           self.for_pattern_search[col_number].append(1.0 if cell_color else 0.0)
       yield self.Z
+
+class MineAutomataSpecWorker(Factory):
+  Name = "mine_spec_worker"
+
+  def __init__(self, cells_per_generation, queue_depth, name=None):
+
+    super().__init__(name if name != None else MineAutomataSpecWorker.Name)
+    self.cells_per_generation = cells_per_generation
+    self.queue_depth = queue_depth
+
+    self.begin_search = self.create(state="begin_search"). \
+      catch(signal=signals.ENTRY_SIGNAL,
+        handler=self.begin_search_entry). \
+      to_method()
+
+    self.nest(self.begin_search, parent=None)
+    self.start_at(self.begin_search)
+
+  @staticmethod
+  def begin_search_entry(worker, e):
+
+    cells_per_generation = worker.cells_per_generation
+    queue_depth = worker.queue_depth
+
+    # this can be a very slow process
+    result = automata_periodicity(
+      width=cells_per_generation,
+      start_depth=queue_depth)
+
+    # spec
+    spec = PioneerResultSpec(
+      cells_per_generation=cells_per_generation,
+      queue_depth=queue_depth,
+      period=result[queue_depth]['period'],
+      loop=result[queue_depth]['repeat?'])
+
+    worker.publish(Event(signal=signals.Pioneer_Complete, payload=spec))
+
+    # we have published, we are done, now stop this thread
+    worker.stop()
+
 
 if __name__ == '__main__':
 
