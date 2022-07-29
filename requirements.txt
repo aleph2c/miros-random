@@ -109,7 +109,7 @@ MarkupSafe==1.1.1
 matplotlib==3.0.3
 -e git+git@github.com:aleph2c/miros.git@ec18cba0c67bf1db246b37d78318582113092461#egg=miros
 miros-rabbitmq==0.2.0
-mistune==0.8.4
+mistune==2.0.3
 mpmath==1.1.0
 nbconvert==5.5.0
 nbformat==4.4.0
@@ -201,7 +201,7 @@ matplotlib==3.0.3
 -e git+git@github.com:aleph2c/miros.git@ec18cba0c67bf1db246b37d78318582113092461#egg=miros
 miros-rabbitmq==0.2.0
 -e git+git@github.com:aleph2c/miros-random.git@408ed68b5e0346f170ed0acc5b9e5953f7466f5c#egg=miros_random
-mistune==0.8.4
+mistune==2.0.3
 more-itertools==7.0.0
 mpmath==1.1.0
 nbconvert==5.5.0
